@@ -9,10 +9,10 @@ class LSTMCell(jit.ScriptModule):
         super(LSTMCell, self).__init__()
         self.input_size = input_size
         self.hidden_size = hidden_size
-        self.weight_ih = Parameter(torch.randn(4 * hidden_size, input_size), device=cuda0)
-        self.weight_hh = Parameter(torch.randn(4 * hidden_size, hidden_size), device=cuda0)
-        self.bias_ih = Parameter(torch.randn(4 * hidden_size), device=cuda0)
-        self.bias_hh = Parameter(torch.randn(4 * hidden_size), device=cuda0)
+        self.weight_ih = Parameter(torch.randn(4 * hidden_size, input_size))
+        self.weight_hh = Parameter(torch.randn(4 * hidden_size, hidden_size))
+        self.bias_ih = Parameter(torch.randn(4 * hidden_size))
+        self.bias_hh = Parameter(torch.randn(4 * hidden_size))
 
     @jit.script_method
     def forward(self, input, state):
