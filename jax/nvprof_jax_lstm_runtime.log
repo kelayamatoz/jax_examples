@@ -1,0 +1,47 @@
+==3820== NVPROF is profiling process 3820, command: python3 test_lstm.py
+==3820== Profiling application: python3 test_lstm.py
+==3820== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   30.30%  62.273us        24  2.5940us  1.9840us  4.8960us  fusion
+                   19.96%  41.024us        21  1.9530us  1.5680us  3.6800us  broadcast_2
+                   18.59%  38.209us        31  1.2320us  1.1520us  1.8240us  [CUDA memcpy HtoD]
+                    9.56%  19.648us         9  2.1830us  2.0160us  2.7840us  add_3
+                    6.49%  13.344us         5  2.6680us  2.1760us  3.1360us  exponential_2
+                    5.82%  11.968us         5  2.3930us  2.0480us  2.8480us  negate_2
+                    4.70%  9.6650us         8  1.2080us  1.1840us  1.3130us  [CUDA memset]
+                    3.13%  6.4320us         3  2.1440us  1.9840us  2.4000us  multiply_3
+                    1.45%  2.9760us         2  1.4880us  1.3760us  1.6000us  [CUDA memcpy DtoH]
+      API calls:   86.56%  206.47ms         1  206.47ms  206.47ms  206.47ms  cuDevicePrimaryCtxRetain
+                    3.75%  8.9457ms         1  8.9457ms  8.9457ms  8.9457ms  cuMemAlloc
+                    3.37%  8.0477ms         1  8.0477ms  8.0477ms  8.0477ms  cuMemFree
+                    2.53%  6.0329ms         1  6.0329ms  6.0329ms  6.0329ms  cuMemFreeHost
+                    0.96%  2.3002ms        11  209.11us  93.170us  270.00us  cuModuleLoadFatBinary
+                    0.56%  1.3358ms       100  13.357us  2.5680us  194.41us  cuStreamAddCallback
+                    0.51%  1.2166ms        67  18.158us  8.3140us  57.874us  cuLaunchKernel
+                    0.44%  1.0556ms         1  1.0556ms  1.0556ms  1.0556ms  cuMemHostAlloc
+                    0.21%  503.01us        11  45.728us  30.688us  101.18us  cuModuleUnload
+                    0.17%  412.75us        31  13.314us  5.7610us  43.287us  cuMemcpyHtoDAsync
+                    0.14%  333.92us       708     471ns     186ns  5.5630us  cuCtxSetCurrent
+                    0.13%  321.62us       231  1.3920us     394ns  12.216us  cuEventRecord
+                    0.13%  312.04us       164  1.9020us     684ns  19.850us  cuStreamWaitEvent
+                    0.10%  238.71us         1  238.71us  238.71us  238.71us  cuDeviceTotalMem
+                    0.10%  229.38us        11  20.852us  1.8340us  181.61us  cuStreamCreate
+                    0.08%  201.17us        47  4.2800us     179ns  104.63us  cuDeviceGetAttribute
+                    0.04%  94.498us         1  94.498us  94.498us  94.498us  cuMemGetInfo
+                    0.04%  87.574us         8  10.946us  7.0040us  18.679us  cuMemsetD32Async
+                    0.03%  70.877us         2  35.438us  34.459us  36.418us  cuMemcpyDtoHAsync
+                    0.03%  65.108us        53  1.2280us     390ns  3.8680us  cuEventCreate
+                    0.03%  62.430us        11  5.6750us  2.9960us  24.746us  cuStreamDestroy
+                    0.02%  37.714us        15  2.5140us     993ns  9.7780us  cuStreamSynchronize
+                    0.02%  37.288us        53     703ns     316ns  2.6940us  cuEventDestroy
+                    0.02%  36.380us        12  3.0310us  1.6600us  14.181us  cuCtxSynchronize
+                    0.01%  25.337us        14  1.8090us     584ns  5.2250us  cuDeviceGet
+                    0.01%  17.466us         1  17.466us  17.466us  17.466us  cuDeviceGetName
+                    0.00%  10.144us        11     922ns     664ns  1.1110us  cuModuleGetFunction
+                    0.00%  9.5990us        11     872ns     793ns  1.2940us  cuStreamQuery
+                    0.00%  8.8090us        22     400ns     245ns     626ns  cuFuncGetAttribute
+                    0.00%  6.1730us         2  3.0860us  2.6910us  3.4820us  cuDeviceGetPCIBusId
+                    0.00%  1.9200us         4     480ns     179ns  1.2610us  cuDeviceGetCount
+                    0.00%  1.4470us         1  1.4470us  1.4470us  1.4470us  cuDevicePrimaryCtxGetState
+                    0.00%     294ns         1     294ns     294ns     294ns  cuCtxGetCurrent
+                    0.00%     247ns         1     247ns     247ns     247ns  cuDriverGetVersion
