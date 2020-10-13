@@ -37,6 +37,8 @@ def test_lstm_module_jit():
     cell = LSTMCell(n_features, n_hidden_units)
     x = torch.ones(n_features, device=cuda0)
     state = (torch.ones(n_hidden_units, device=cuda0), torch.ones(n_hidden_units, device=cuda0))
+    result = cell(x, state)
+    print(result)
 
 if __name__ == "__main__":
      test_lstm_module_jit()
