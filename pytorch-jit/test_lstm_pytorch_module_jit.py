@@ -1,5 +1,6 @@
 import torch
 from torch import jit
+from torch.nn.parameter import Parameter
 
 cuda0 = torch.device('cuda:0')
 
