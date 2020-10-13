@@ -2,32 +2,32 @@ import torch
 
 @torch.jit.script
 def test_lstm():
-
+    cuda0 = torch.device('cuda:0')
     n_hidden_units = 128
     n_features = 128
     w_shape = (n_hidden_units, n_features)
     u_shape = (n_hidden_units, n_hidden_units)
 
 
-    xt = torch.ones(n_features)
-    ht = torch.ones(n_hidden_units)
-    ct_1 = torch.ones(n_hidden_units)
+    xt = torch.ones(n_features, device=cuda0)
+    ht = torch.ones(n_hidden_units, device=cuda0)
+    ct_1 = torch.ones(n_hidden_units, device=cuda0)
 
-    wf = torch.ones(w_shape)
-    uf = torch.ones(u_shape)
-    bf = torch.ones(n_hidden_units)
+    wf = torch.ones(w_shape, device=cuda0)
+    uf = torch.ones(u_shape, device=cuda0)
+    bf = torch.ones(n_hidden_units, device=cuda0)
 
-    wi = torch.ones(w_shape)
-    ui = torch.ones(u_shape)
-    bi = torch.ones(n_hidden_units)
+    wi = torch.ones(w_shape, device=cuda0)
+    ui = torch.ones(u_shape, device=cuda0)
+    bi = torch.ones(n_hidden_units, device=cuda0)
 
-    wo = torch.ones(w_shape)
-    uo = torch.ones(u_shape)
-    bo = torch.ones(n_hidden_units)
+    wo = torch.ones(w_shape, device=cuda0)
+    uo = torch.ones(u_shape, device=cuda0)
+    bo = torch.ones(n_hidden_units, device=cuda0)
 
-    wc = torch.ones(w_shape)
-    uc = torch.ones(u_shape)
-    bc = torch.ones(n_hidden_units)
+    wc = torch.ones(w_shape, device=cuda0)
+    uc = torch.ones(u_shape, device=cuda0)
+    bc = torch.ones(n_hidden_units, device=cuda0)
 
     ft = torch.sigmoid(wf @ xt + uf @ ht + bf)
     it = torch.sigmoid(wi @ xt + ui @ ht + bi)
@@ -39,3 +39,4 @@ def test_lstm():
 
 if __name__ == "__main__":
     print(test_lstm())
+    print(test_lstm.code)
