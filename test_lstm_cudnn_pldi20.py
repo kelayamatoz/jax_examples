@@ -131,7 +131,6 @@ if __name__ == '__main__':
     dataset = DatasetSynth(config)
 
     with tf.Session() as sess:
-        # inputs = tf.placeholder(tf.float32, shape=[_batch_size, max_time, num_features])
         lstm = LSTMTest(dataset.next, config, is_cudnn=True)
 
         sess.run(tf.global_variables_initializer())

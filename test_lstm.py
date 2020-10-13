@@ -2,6 +2,8 @@ import jax
 import jax.numpy as jnp
 from jax import jit
 
+def jax_tanh(x):
+    return 2 * jax.nn.sigmoid(2 * x) - 1
 
 def test_lstm():
     n_hidden_units = 128
@@ -31,9 +33,9 @@ def test_lstm():
     ft = jax.nn.sigmoid(wf @ xt + uf @ ht + bf)
     it = jax.nn.sigmoid(wi @ xt + ui @ ht + bi)
     ot = jax.nn.sigmoid(wo @ xt + uo @ ht + bo)
-    c_tel_t = jax.numpy.tanh(wc @ xt + uc @ ht + bc)
+    c_tel_t = jax_tanh(wc @ xt + uc @ ht + bc)
     ct = ft * ct_1 + it * c_tel_t
-    ht_new = ot * jax.numpy.tanh(ct)
+    ht_new = ot * jax_tanh(ct)
     return ct, ht_new
 
 
