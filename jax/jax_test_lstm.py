@@ -5,6 +5,7 @@ from jax import jit
 def jax_tanh(x):
     return 2 * jax.nn.sigmoid(2 * x) - 1
 
+@jit
 def test_lstm():
     n_hidden_units = 128
     n_features = 128
