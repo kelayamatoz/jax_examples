@@ -1,0 +1,1663 @@
+BufferAssignment:
+allocation 0: 0x7f913c336000, size 16257024, maybe-live-out:
+ value: <22 fusion.20 @0> (size=9216,offset=0): u32[2304]{0}
+ value: <33 copy.6 @0> (size=16,offset=0): u32[4]{0}
+ value: <37 copy.30 @0> (size=16,offset=0): u32[4]{0}
+ value: <45 copy.78 @0> (size=16,offset=0): u32[4]{0}
+ value: <58 copy.10 @0> (size=8,offset=0): u32[2]{0}
+ value: <67 copy.22 @0> (size=16,offset=0): u32[4]{0}
+ value: <78 copy.34 @0> (size=8,offset=0): u32[2]{0}
+ value: <87 copy.46 @0> (size=16,offset=0): u32[4]{0}
+ value: <116 copy.82 @0> (size=64,offset=0): u32[16]{0}
+ value: <125 copy.94 @0> (size=16,offset=0): u32[4]{0}
+ value: <558 broadcast.1342.clone @0> (size=8388608,offset=0): f32[32,64,64,16]{3,2,1,0}
+ value: <559 reduce-window.1355.clone @0> (size=16257024,offset=0): f32[32,63,63,32]{3,2,1,0}
+ value: <652 fusion.5.clone @0> (size=9216,offset=0): u32[2304]{0}
+ value: <898 while.14{6} (phi) @0> (size=16,offset=0): u32[4]{0}
+ value: <906 while.15{6} (phi) @0> (size=16,offset=0): u32[4]{0}
+ value: <909 while.16{1} (phi) @0> (size=9216,offset=0): u32[2304]{0}
+ value: <922 while.17{6} (phi) @0> (size=16,offset=0): u32[4]{0}
+ value: <930 parameter.1{6} (phi) @0> (size=16,offset=0): u32[4]{0}
+ value: <938 parameter.0{6} (phi) @0> (size=16,offset=0): u32[4]{0}
+ value: <946 parameter.3{6} (phi) @0> (size=16,offset=0): u32[4]{0}
+ value: <954 parameter.2{6} (phi) @0> (size=16,offset=0): u32[4]{0}
+ value: <957 parameter.5{1} (phi) @0> (size=9216,offset=0): u32[2304]{0}
+ value: <965 parameter.4{1} (phi) @0> (size=9216,offset=0): u32[2304]{0}
+ value: <978 parameter.7{6} (phi) @0> (size=16,offset=0): u32[4]{0}
+ value: <986 parameter.6{6} (phi) @0> (size=16,offset=0): u32[4]{0}
+allocation 1: 0x7f913c3360b8, size 4, thread-local:
+ value: <2 maximum.1354 @0> (size=4,offset=0): f32[]
+allocation 2: 0x7f913c336170, size 4, thread-local:
+ value: <1 parameter.1353 @0> (size=4,offset=0): f32[]
+allocation 3: 0x7f913c336228, size 4, thread-local:
+ value: <0 parameter.1352 @0> (size=4,offset=0): f32[]
+allocation 4: 0x7f913c3362e0, size 4, constant:
+ value: <52 constant.286 @0> (size=4,offset=0): s32[]
+allocation 5: 0x7f913c336398, size 16, constant:
+ value: <8 constant.81 @0> (size=16,offset=0): u32[4]{0}
+allocation 6: 0x7f913c336450, size 16, constant:
+ value: <9 constant.82 @0> (size=16,offset=0): u32[4]{0}
+allocation 7: 0x7f913c336508, size 8, output shape is |(f32[32,63,63,32])|, maybe-live-out:
+ value: <6 tuple.1356{} @0> (size=8,offset=0): (f32[32,63,63,32]{3,2,1,0})
+allocation 8: 0x7f913c3365c0, size 4, constant:
+ value: <3 constant.1341 @0> (size=4,offset=0): f32[]
+allocation 9: 0x7f913c336678, size 4, constant:
+ value: <7 constant.77 @0> (size=4,offset=0): s32[]
+allocation 10: 0x7f913c336730, size 4, constant:
+ value: <11 constant.419 @0> (size=4,offset=0): u32[]
+allocation 11: 0x7f913c3367e8, size 4, constant:
+ value: <10 constant.106 @0> (size=4,offset=0): u32[]
+allocation 12: 0x7f913c3368a0, size 4, constant:
+ value: <5 constant.1350 @0> (size=4,offset=0): f32[]
+allocation 13: 0x7f913c336958, size 4, constant:
+ value: <108 constant.323 @0> (size=4,offset=0): s32[]
+allocation 14: 0x7f913c336a10, size 4, constant:
+ value: <110 constant.326 @0> (size=4,offset=0): s32[]
+allocation 15: 0x7f913c336ac8, size 4, constant:
+ value: <90 constant.310 @0> (size=4,offset=0): s32[]
+allocation 16: 0x7f913c336b80, size 4, constant:
+ value: <92 constant.313 @0> (size=4,offset=0): s32[]
+allocation 17: 0x7f913c336c38, size 4, constant:
+ value: <70 constant.295 @0> (size=4,offset=0): s32[]
+allocation 18: 0x7f913c336cf0, size 4, constant:
+ value: <72 constant.298 @0> (size=4,offset=0): s32[]
+allocation 19: 0x7f913c336da8, size 4, constant:
+ value: <50 constant.283 @0> (size=4,offset=0): s32[]
+allocation 20: 0x7f913c336e60, size 33555072, preallocated-temp:
+ value: <4 convolution.1343 @0> (size=16777216,offset=64): f32[32,64,64,32]{3,2,1,0}
+ value: <12 fusion.9 @0> (size=128,offset=33554496): f32[1,1,1,32]{3,2,1,0}
+ value: <13 fusion.10 @0> (size=128,offset=33554624): f32[1,1,1,32]{3,2,1,0}
+ value: <14 fusion.11 @0> (size=4,offset=176): u32[]
+ value: <15 fusion.12 @0> (size=64,offset=33554752): u32[16]{0}
+ value: <16 fusion.13 @0> (size=4,offset=224): u32[]
+ value: <17 fusion.14 @0> (size=64,offset=33554816): u32[16]{0}
+ value: <18 fusion.15 @0> (size=4,offset=240): u32[]
+ value: <19 fusion.17 @0> (size=4,offset=27744): u32[]
+ value: <20 fusion.18 @0> (size=9216,offset=18496): u32[2304]{0}
+ value: <21 fusion.19 @0> (size=4,offset=27792): u32[]
+ value: <23 fusion.21 @0> (size=4,offset=27808): u32[]
+ value: <24 fusion.22 @0> (size=4,offset=192): u32[]
+ value: <25 fusion.23 @0> (size=8,offset=112): u32[2]{0}
+ value: <26 fusion.24 @0> (size=4,offset=208): u32[]
+ value: <27 fusion.25 @0> (size=8,offset=160): u32[2]{0}
+ value: <28 fusion.26 @0> (size=4,offset=224): u32[]
+ value: <29 fusion.27 @0> (size=8,offset=128): u32[2]{0}
+ value: <30 fusion.28 @0> (size=8,offset=144): u32[2]{0}
+ value: <31 copy @0> (size=4,offset=192): s32[]
+ value: <32 copy.5 @0> (size=4,offset=208): u32[]
+ value: <34 copy.7 @0> (size=16,offset=96): u32[4]{0}
+ value: <35 tuple.91{} @0> (size=64,offset=33555008): (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <36 copy.24 @0> (size=4,offset=240): s32[]
+ value: <38 copy.31 @0> (size=16,offset=96): u32[4]{0}
+ value: <39 tuple.94{} @0> (size=64,offset=33554944): (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <40 copy.48 @0> (size=4,offset=27824): s32[]
+ value: <41 copy.54 @0> (size=16,offset=80): u32[4]{0}
+ value: <42 copy.55 @0> (size=16,offset=27728): u32[4]{0}
+ value: <43 tuple.97{} @0> (size=64,offset=33554880): (s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <44 copy.72 @0> (size=4,offset=256): s32[]
+ value: <46 copy.79 @0> (size=16,offset=144): u32[4]{0}
+ value: <47 tuple.100{} @0> (size=64,offset=0): (s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <48 copy.96 @0> (size=4,offset=160): u32[]
+ value: <49 copy.97 @0> (size=4,offset=224): u32[]
+ value: <51 compare.12 @0> (size=1,offset=112): pred[]
+ value: <53 add.112 @0> (size=4,offset=192): s32[]
+ value: <54 fusion @0> (size=8,offset=128): u32[2]{0}
+ value: <55 fusion.1 @0> (size=8,offset=144): u32[2]{0}
+ value: <56 copy.8 @0> (size=4,offset=176): s32[]
+ value: <57 copy.9 @0> (size=8,offset=80): u32[2]{0}
+ value: <59 copy.11 @0> (size=4,offset=160): u32[]
+ value: <60 copy.12 @0> (size=4,offset=112): u32[]
+ value: <61 copy.13 @0> (size=4,offset=64): u32[]
+ value: <62 copy.14 @0> (size=16,offset=64): u32[4]{0}
+ value: <63 copy.15 @0> (size=16,offset=80): u32[4]{0}
+ value: <64 copy.19 @0> (size=4,offset=224): u32[]
+ value: <65 copy.20 @0> (size=4,offset=160): u32[]
+ value: <66 copy.21 @0> (size=4,offset=208): u32[]
+ value: <68 copy.23 @0> (size=16,offset=96): u32[4]{0}
+ value: <69 tuple.93{} @0> (size=64,offset=33555008): (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <71 compare.13 @0> (size=1,offset=176): pred[]
+ value: <73 add.123 @0> (size=4,offset=240): s32[]
+ value: <74 fusion.2 @0> (size=8,offset=112): u32[2]{0}
+ value: <75 fusion.3 @0> (size=8,offset=160): u32[2]{0}
+ value: <76 copy.32 @0> (size=4,offset=144): s32[]
+ value: <77 copy.33 @0> (size=8,offset=80): u32[2]{0}
+ value: <79 copy.35 @0> (size=4,offset=128): u32[]
+ value: <80 copy.36 @0> (size=4,offset=176): u32[]
+ value: <81 copy.37 @0> (size=4,offset=64): u32[]
+ value: <82 copy.38 @0> (size=16,offset=64): u32[4]{0}
+ value: <83 copy.39 @0> (size=16,offset=80): u32[4]{0}
+ value: <84 copy.43 @0> (size=4,offset=208): u32[]
+ value: <85 copy.44 @0> (size=4,offset=192): u32[]
+ value: <86 copy.45 @0> (size=4,offset=224): u32[]
+ value: <88 copy.47 @0> (size=16,offset=96): u32[4]{0}
+ value: <89 tuple.96{} @0> (size=64,offset=33554944): (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <91 compare.14 @0> (size=1,offset=64): pred[]
+ value: <93 add.132 @0> (size=4,offset=27824): s32[]
+ value: <94 copy.56 @0> (size=4,offset=27760): s32[]
+ value: <95 copy.57 @0> (size=9216,offset=64): u32[2304]{0}
+ value: <96 copy.58 @0> (size=9216,offset=9280): u32[2304]{0}
+ value: <97 copy.59 @0> (size=4,offset=27744): u32[]
+ value: <98 copy.60 @0> (size=4,offset=27776): u32[]
+ value: <99 copy.61 @0> (size=4,offset=27712): u32[]
+ value: <100 copy.62 @0> (size=16,offset=27712): u32[4]{0}
+ value: <101 copy.63 @0> (size=16,offset=64): u32[4]{0}
+ value: <102 copy.67 @0> (size=4,offset=27792): u32[]
+ value: <103 copy.68 @0> (size=4,offset=27744): u32[]
+ value: <104 copy.69 @0> (size=4,offset=27808): u32[]
+ value: <105 copy.70 @0> (size=16,offset=80): u32[4]{0}
+ value: <106 copy.71 @0> (size=16,offset=27728): u32[4]{0}
+ value: <107 tuple.99{} @0> (size=64,offset=33554880): (s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <109 compare.15 @0> (size=1,offset=192): pred[]
+ value: <111 add.141 @0> (size=4,offset=256): s32[]
+ value: <112 fusion.6 @0> (size=64,offset=33554752): u32[16]{0}
+ value: <113 fusion.7 @0> (size=64,offset=33554816): u32[16]{0}
+ value: <114 copy.80 @0> (size=4,offset=192): s32[]
+ value: <115 copy.81 @0> (size=64,offset=64): u32[16]{0}
+ value: <117 copy.83 @0> (size=4,offset=176): u32[]
+ value: <118 copy.84 @0> (size=4,offset=208): u32[]
+ value: <119 copy.85 @0> (size=4,offset=192): u32[]
+ value: <120 copy.86 @0> (size=16,offset=128): u32[4]{0}
+ value: <121 copy.87 @0> (size=16,offset=64): u32[4]{0}
+ value: <122 copy.91 @0> (size=4,offset=224): u32[]
+ value: <123 copy.92 @0> (size=4,offset=176): u32[]
+ value: <124 copy.93 @0> (size=4,offset=240): u32[]
+ value: <126 copy.95 @0> (size=16,offset=144): u32[4]{0}
+ value: <127 tuple.102{} @0> (size=64,offset=0): (s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <613 fusion.4.clone @0> (size=9216,offset=18496): u32[2304]{0}
+ value: <767 fusion.8.clone @0> (size=16777216,offset=16777280): f32[32,64,64,32]{3,2,1,0}
+ value: <879 fusion.16.clone @0> (size=18432,offset=16777280): f32[3,3,16,32]{3,2,1,0}
+ value: <880 while.14{} (phi) @0> (size=64,offset=33555008): (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <881 while.15{} (phi) @0> (size=64,offset=33554944): (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <882 while.16{} (phi) @0> (size=64,offset=33554880): (s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <883 while.17{} (phi) @0> (size=64,offset=0): (s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <884 parameter.0{} (phi) @0> (size=64,offset=33555008): (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <885 parameter.1{} (phi) @0> (size=64,offset=33555008): (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <886 parameter.2{} (phi) @0> (size=64,offset=33554944): (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <887 parameter.3{} (phi) @0> (size=64,offset=33554944): (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <888 parameter.4{} (phi) @0> (size=64,offset=33554880): (s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <889 parameter.5{} (phi) @0> (size=64,offset=33554880): (s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <890 parameter.6{} (phi) @0> (size=64,offset=0): (s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <891 parameter.7{} (phi) @0> (size=64,offset=0): (s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0})
+ value: <892 while.14{0} (phi) @0> (size=4,offset=192): s32[]
+ value: <893 while.14{1} (phi) @0> (size=8,offset=144): u32[2]{0}
+ value: <894 while.14{2} (phi) @0> (size=8,offset=128): u32[2]{0}
+ value: <895 while.14{3} (phi) @0> (size=4,offset=224): u32[]
+ value: <896 while.14{4} (phi) @0> (size=4,offset=160): u32[]
+ value: <897 while.14{5} (phi) @0> (size=4,offset=208): u32[]
+ value: <899 while.14{7} (phi) @0> (size=16,offset=96): u32[4]{0}
+ value: <900 while.15{0} (phi) @0> (size=4,offset=240): s32[]
+ value: <901 while.15{1} (phi) @0> (size=8,offset=160): u32[2]{0}
+ value: <902 while.15{2} (phi) @0> (size=8,offset=112): u32[2]{0}
+ value: <903 while.15{3} (phi) @0> (size=4,offset=208): u32[]
+ value: <904 while.15{4} (phi) @0> (size=4,offset=192): u32[]
+ value: <905 while.15{5} (phi) @0> (size=4,offset=224): u32[]
+ value: <907 while.15{7} (phi) @0> (size=16,offset=96): u32[4]{0}
+ value: <908 while.16{0} (phi) @0> (size=4,offset=27824): s32[]
+ value: <910 while.16{2} (phi) @0> (size=9216,offset=18496): u32[2304]{0}
+ value: <911 while.16{3} (phi) @0> (size=4,offset=27792): u32[]
+ value: <912 while.16{4} (phi) @0> (size=4,offset=27744): u32[]
+ value: <913 while.16{5} (phi) @0> (size=4,offset=27808): u32[]
+ value: <914 while.16{6} (phi) @0> (size=16,offset=80): u32[4]{0}
+ value: <915 while.16{7} (phi) @0> (size=16,offset=27728): u32[4]{0}
+ value: <916 while.17{0} (phi) @0> (size=4,offset=256): s32[]
+ value: <917 while.17{1} (phi) @0> (size=64,offset=33554816): u32[16]{0}
+ value: <918 while.17{2} (phi) @0> (size=64,offset=33554752): u32[16]{0}
+ value: <919 while.17{3} (phi) @0> (size=4,offset=224): u32[]
+ value: <920 while.17{4} (phi) @0> (size=4,offset=176): u32[]
+ value: <921 while.17{5} (phi) @0> (size=4,offset=240): u32[]
+ value: <923 while.17{7} (phi) @0> (size=16,offset=144): u32[4]{0}
+ value: <924 parameter.1{0} (phi) @0> (size=4,offset=192): s32[]
+ value: <925 parameter.1{1} (phi) @0> (size=8,offset=144): u32[2]{0}
+ value: <926 parameter.1{2} (phi) @0> (size=8,offset=128): u32[2]{0}
+ value: <927 parameter.1{3} (phi) @0> (size=4,offset=224): u32[]
+ value: <928 parameter.1{4} (phi) @0> (size=4,offset=160): u32[]
+ value: <929 parameter.1{5} (phi) @0> (size=4,offset=208): u32[]
+ value: <931 parameter.1{7} (phi) @0> (size=16,offset=96): u32[4]{0}
+ value: <932 parameter.0{0} (phi) @0> (size=4,offset=192): s32[]
+ value: <933 parameter.0{1} (phi) @0> (size=8,offset=144): u32[2]{0}
+ value: <934 parameter.0{2} (phi) @0> (size=8,offset=128): u32[2]{0}
+ value: <935 parameter.0{3} (phi) @0> (size=4,offset=224): u32[]
+ value: <936 parameter.0{4} (phi) @0> (size=4,offset=160): u32[]
+ value: <937 parameter.0{5} (phi) @0> (size=4,offset=208): u32[]
+ value: <939 parameter.0{7} (phi) @0> (size=16,offset=96): u32[4]{0}
+ value: <940 parameter.3{0} (phi) @0> (size=4,offset=240): s32[]
+ value: <941 parameter.3{1} (phi) @0> (size=8,offset=160): u32[2]{0}
+ value: <942 parameter.3{2} (phi) @0> (size=8,offset=112): u32[2]{0}
+ value: <943 parameter.3{3} (phi) @0> (size=4,offset=208): u32[]
+ value: <944 parameter.3{4} (phi) @0> (size=4,offset=192): u32[]
+ value: <945 parameter.3{5} (phi) @0> (size=4,offset=224): u32[]
+ value: <947 parameter.3{7} (phi) @0> (size=16,offset=96): u32[4]{0}
+ value: <948 parameter.2{0} (phi) @0> (size=4,offset=240): s32[]
+ value: <949 parameter.2{1} (phi) @0> (size=8,offset=160): u32[2]{0}
+ value: <950 parameter.2{2} (phi) @0> (size=8,offset=112): u32[2]{0}
+ value: <951 parameter.2{3} (phi) @0> (size=4,offset=208): u32[]
+ value: <952 parameter.2{4} (phi) @0> (size=4,offset=192): u32[]
+ value: <953 parameter.2{5} (phi) @0> (size=4,offset=224): u32[]
+ value: <955 parameter.2{7} (phi) @0> (size=16,offset=96): u32[4]{0}
+ value: <956 parameter.5{0} (phi) @0> (size=4,offset=27824): s32[]
+ value: <958 parameter.5{2} (phi) @0> (size=9216,offset=18496): u32[2304]{0}
+ value: <959 parameter.5{3} (phi) @0> (size=4,offset=27792): u32[]
+ value: <960 parameter.5{4} (phi) @0> (size=4,offset=27744): u32[]
+ value: <961 parameter.5{5} (phi) @0> (size=4,offset=27808): u32[]
+ value: <962 parameter.5{6} (phi) @0> (size=16,offset=80): u32[4]{0}
+ value: <963 parameter.5{7} (phi) @0> (size=16,offset=27728): u32[4]{0}
+ value: <964 parameter.4{0} (phi) @0> (size=4,offset=27824): s32[]
+ value: <966 parameter.4{2} (phi) @0> (size=9216,offset=18496): u32[2304]{0}
+ value: <967 parameter.4{3} (phi) @0> (size=4,offset=27792): u32[]
+ value: <968 parameter.4{4} (phi) @0> (size=4,offset=27744): u32[]
+ value: <969 parameter.4{5} (phi) @0> (size=4,offset=27808): u32[]
+ value: <970 parameter.4{6} (phi) @0> (size=16,offset=80): u32[4]{0}
+ value: <971 parameter.4{7} (phi) @0> (size=16,offset=27728): u32[4]{0}
+ value: <972 parameter.7{0} (phi) @0> (size=4,offset=256): s32[]
+ value: <973 parameter.7{1} (phi) @0> (size=64,offset=33554816): u32[16]{0}
+ value: <974 parameter.7{2} (phi) @0> (size=64,offset=33554752): u32[16]{0}
+ value: <975 parameter.7{3} (phi) @0> (size=4,offset=224): u32[]
+ value: <976 parameter.7{4} (phi) @0> (size=4,offset=176): u32[]
+ value: <977 parameter.7{5} (phi) @0> (size=4,offset=240): u32[]
+ value: <979 parameter.7{7} (phi) @0> (size=16,offset=144): u32[4]{0}
+ value: <980 parameter.6{0} (phi) @0> (size=4,offset=256): s32[]
+ value: <981 parameter.6{1} (phi) @0> (size=64,offset=33554816): u32[16]{0}
+ value: <982 parameter.6{2} (phi) @0> (size=64,offset=33554752): u32[16]{0}
+ value: <983 parameter.6{3} (phi) @0> (size=4,offset=224): u32[]
+ value: <984 parameter.6{4} (phi) @0> (size=4,offset=176): u32[]
+ value: <985 parameter.6{5} (phi) @0> (size=4,offset=240): u32[]
+ value: <987 parameter.6{7} (phi) @0> (size=16,offset=144): u32[4]{0}
+
+Total bytes used: 49812200
+
+Used values:
+<0 parameter.1352 @0>
+ positions:
+  parameter.1352
+ uses:
+  maximum.1354, operand 0
+<1 parameter.1353 @0>
+ positions:
+  parameter.1353
+ uses:
+  maximum.1354, operand 1
+<2 maximum.1354 @0>
+ positions:
+  maximum.1354
+ uses:
+<3 constant.1341 @0>
+ positions:
+  constant.1341
+  p
+ uses:
+  call, operand 0
+  broadcast.1342.clone, operand 0
+<4 convolution.1343 @0>
+ positions:
+  convolution.1343
+  p.12
+ uses:
+  call.4, operand 0
+  fusion.8.clone, operand 0
+<5 constant.1350 @0>
+ positions:
+  constant.1350
+  p.2
+ uses:
+  call.1, operand 1
+  reduce-window.1355.clone, operand 1
+<6 tuple.1356{} @0>
+ positions:
+  tuple.1356 {}
+ uses:
+<7 constant.77 @0>
+ positions:
+  constant.77
+ uses:
+  copy, operand 0
+  copy.24, operand 0
+  copy.48, operand 0
+  copy.72, operand 0
+<8 constant.81 @0>
+ positions:
+  constant.81
+ uses:
+  copy.6, operand 0
+  copy.30, operand 0
+  copy.54, operand 0
+  copy.78, operand 0
+<9 constant.82 @0>
+ positions:
+  constant.82
+ uses:
+  copy.7, operand 0
+  copy.31, operand 0
+  copy.55, operand 0
+  copy.79, operand 0
+<10 constant.106 @0>
+ positions:
+  constant.106
+ uses:
+  copy.96, operand 0
+<11 constant.419 @0>
+ positions:
+  constant.419
+ uses:
+  copy.97, operand 0
+<12 fusion.9 @0>
+ positions:
+  fusion.9
+  p.13
+ uses:
+  call.4, operand 1
+  fusion.8.clone, operand 1
+<13 fusion.10 @0>
+ positions:
+  fusion.10
+  p.14
+ uses:
+  fusion.9, operand 0
+  call.4, operand 2
+  fusion.8.clone, operand 2
+<14 fusion.11 @0>
+ positions:
+  fusion.11
+  tuple.100 {4}
+ uses:
+  while.17, operand 0 {4}
+<15 fusion.12 @0>
+ positions:
+  fusion.12
+  tuple.100 {2}
+ uses:
+  while.17, operand 0 {2}
+<16 fusion.13 @0>
+ positions:
+  fusion.13
+  tuple.100 {3}
+ uses:
+  while.17, operand 0 {3}
+<17 fusion.14 @0>
+ positions:
+  fusion.14
+  tuple.100 {1}
+ uses:
+  while.17, operand 0 {1}
+<18 fusion.15 @0>
+ positions:
+  fusion.15
+  tuple.100 {5}
+ uses:
+  while.17, operand 0 {5}
+<19 fusion.17 @0>
+ positions:
+  fusion.17
+  tuple.97 {4}
+ uses:
+  while.16, operand 0 {4}
+<20 fusion.18 @0>
+ positions:
+  fusion.18
+  tuple.97 {2}
+ uses:
+  while.16, operand 0 {2}
+<21 fusion.19 @0>
+ positions:
+  fusion.19
+  tuple.97 {3}
+ uses:
+  while.16, operand 0 {3}
+<22 fusion.20 @0>
+ positions:
+  fusion.20
+  tuple.97 {1}
+ uses:
+  while.16, operand 0 {1}
+<23 fusion.21 @0>
+ positions:
+  fusion.21
+  tuple.97 {5}
+ uses:
+  while.16, operand 0 {5}
+<24 fusion.22 @0>
+ positions:
+  fusion.22
+  tuple.94 {4}
+ uses:
+  while.15, operand 0 {4}
+<25 fusion.23 @0>
+ positions:
+  fusion.23
+  tuple.94 {2}
+ uses:
+  while.15, operand 0 {2}
+<26 fusion.24 @0>
+ positions:
+  fusion.24
+  tuple.94 {3}
+ uses:
+  while.15, operand 0 {3}
+<27 fusion.25 @0>
+ positions:
+  fusion.25
+  tuple.94 {1}
+ uses:
+  while.15, operand 0 {1}
+<28 fusion.26 @0>
+ positions:
+  fusion.26
+  tuple.94 {5}
+ uses:
+  while.15, operand 0 {5}
+<29 fusion.27 @0>
+ positions:
+  fusion.27
+  tuple.91 {2}
+ uses:
+  while.14, operand 0 {2}
+<30 fusion.28 @0>
+ positions:
+  fusion.28
+  tuple.91 {1}
+ uses:
+  while.14, operand 0 {1}
+<31 copy @0>
+ positions:
+  copy
+  tuple.91 {0}
+ uses:
+  while.14, operand 0 {0}
+<32 copy.5 @0>
+ positions:
+  copy.5
+  tuple.91 {5}
+ uses:
+  while.14, operand 0 {5}
+<33 copy.6 @0>
+ positions:
+  copy.6
+  tuple.91 {6}
+ uses:
+  while.14, operand 0 {6}
+<34 copy.7 @0>
+ positions:
+  copy.7
+  tuple.91 {7}
+ uses:
+  while.14, operand 0 {7}
+<35 tuple.91{} @0>
+ positions:
+  tuple.91 {}
+ uses:
+  while.14, operand 0 {}
+<36 copy.24 @0>
+ positions:
+  copy.24
+  tuple.94 {0}
+ uses:
+  while.15, operand 0 {0}
+<37 copy.30 @0>
+ positions:
+  copy.30
+  tuple.94 {6}
+ uses:
+  while.15, operand 0 {6}
+<38 copy.31 @0>
+ positions:
+  copy.31
+  tuple.94 {7}
+ uses:
+  while.15, operand 0 {7}
+<39 tuple.94{} @0>
+ positions:
+  tuple.94 {}
+ uses:
+  while.15, operand 0 {}
+<40 copy.48 @0>
+ positions:
+  copy.48
+  tuple.97 {0}
+ uses:
+  while.16, operand 0 {0}
+<41 copy.54 @0>
+ positions:
+  copy.54
+  tuple.97 {6}
+ uses:
+  while.16, operand 0 {6}
+<42 copy.55 @0>
+ positions:
+  copy.55
+  tuple.97 {7}
+ uses:
+  while.16, operand 0 {7}
+<43 tuple.97{} @0>
+ positions:
+  tuple.97 {}
+ uses:
+  while.16, operand 0 {}
+<44 copy.72 @0>
+ positions:
+  copy.72
+  tuple.100 {0}
+ uses:
+  while.17, operand 0 {0}
+<45 copy.78 @0>
+ positions:
+  copy.78
+  tuple.100 {6}
+ uses:
+  while.17, operand 0 {6}
+<46 copy.79 @0>
+ positions:
+  copy.79
+  tuple.100 {7}
+ uses:
+  while.17, operand 0 {7}
+<47 tuple.100{} @0>
+ positions:
+  tuple.100 {}
+ uses:
+  while.17, operand 0 {}
+<48 copy.96 @0>
+ positions:
+  copy.96
+  tuple.91 {4}
+ uses:
+  while.14, operand 0 {4}
+<49 copy.97 @0>
+ positions:
+  copy.97
+  tuple.91 {3}
+ uses:
+  copy.5, operand 0
+  while.14, operand 0 {3}
+<50 constant.283 @0>
+ positions:
+  constant.283
+ uses:
+  compare.12, operand 1
+<51 compare.12 @0>
+ positions:
+  compare.12
+ uses:
+<52 constant.286 @0>
+ positions:
+  constant.286
+ uses:
+  add.112, operand 1
+<53 add.112 @0>
+ positions:
+  add.112
+  tuple.93 {0}
+ uses:
+  tuple.93, operand 0
+<54 fusion @0>
+ positions:
+  fusion
+  tuple.93 {2}
+ uses:
+  tuple.93, operand 2
+<55 fusion.1 @0>
+ positions:
+  fusion.1
+  tuple.93 {1}
+ uses:
+  tuple.93, operand 1
+<56 copy.8 @0>
+ positions:
+  copy.8
+ uses:
+  fusion, operand 4
+  add.112, operand 0
+<57 copy.9 @0>
+ positions:
+  copy.9
+ uses:
+  fusion, operand 3
+  fusion.1, operand 3
+<58 copy.10 @0>
+ positions:
+  copy.10
+ uses:
+  fusion, operand 2
+  fusion.1, operand 2
+<59 copy.11 @0>
+ positions:
+  copy.11
+ uses:
+  fusion.1, operand 0
+  copy.21, operand 0
+<60 copy.12 @0>
+ positions:
+  copy.12
+ uses:
+  fusion, operand 0
+  copy.19, operand 0
+<61 copy.13 @0>
+ positions:
+  copy.13
+ uses:
+  copy.20, operand 0
+<62 copy.14 @0>
+ positions:
+  copy.14
+ uses:
+  fusion, operand 1
+  copy.23, operand 0
+  fusion.1, operand 1
+<63 copy.15 @0>
+ positions:
+  copy.15
+ uses:
+  copy.22, operand 0
+<64 copy.19 @0>
+ positions:
+  copy.19
+  tuple.93 {3}
+ uses:
+  tuple.93, operand 3
+<65 copy.20 @0>
+ positions:
+  copy.20
+  tuple.93 {4}
+ uses:
+  tuple.93, operand 4
+<66 copy.21 @0>
+ positions:
+  copy.21
+  tuple.93 {5}
+ uses:
+  tuple.93, operand 5
+<67 copy.22 @0>
+ positions:
+  copy.22
+  tuple.93 {6}
+ uses:
+  tuple.93, operand 6
+<68 copy.23 @0>
+ positions:
+  copy.23
+  tuple.93 {7}
+ uses:
+  tuple.93, operand 7
+<69 tuple.93{} @0>
+ positions:
+  tuple.93 {}
+ uses:
+<70 constant.295 @0>
+ positions:
+  constant.295
+ uses:
+  compare.13, operand 1
+<71 compare.13 @0>
+ positions:
+  compare.13
+ uses:
+<72 constant.298 @0>
+ positions:
+  constant.298
+ uses:
+  add.123, operand 1
+<73 add.123 @0>
+ positions:
+  add.123
+  tuple.96 {0}
+ uses:
+  tuple.96, operand 0
+<74 fusion.2 @0>
+ positions:
+  fusion.2
+  tuple.96 {2}
+ uses:
+  tuple.96, operand 2
+<75 fusion.3 @0>
+ positions:
+  fusion.3
+  tuple.96 {1}
+ uses:
+  tuple.96, operand 1
+<76 copy.32 @0>
+ positions:
+  copy.32
+ uses:
+  fusion.2, operand 4
+  add.123, operand 0
+<77 copy.33 @0>
+ positions:
+  copy.33
+ uses:
+  fusion.2, operand 3
+  fusion.3, operand 3
+<78 copy.34 @0>
+ positions:
+  copy.34
+ uses:
+  fusion.2, operand 2
+  fusion.3, operand 2
+<79 copy.35 @0>
+ positions:
+  copy.35
+ uses:
+  fusion.3, operand 0
+  copy.45, operand 0
+<80 copy.36 @0>
+ positions:
+  copy.36
+ uses:
+  fusion.2, operand 0
+  copy.43, operand 0
+<81 copy.37 @0>
+ positions:
+  copy.37
+ uses:
+  copy.44, operand 0
+<82 copy.38 @0>
+ positions:
+  copy.38
+ uses:
+  fusion.2, operand 1
+  copy.47, operand 0
+  fusion.3, operand 1
+<83 copy.39 @0>
+ positions:
+  copy.39
+ uses:
+  copy.46, operand 0
+<84 copy.43 @0>
+ positions:
+  copy.43
+  tuple.96 {3}
+ uses:
+  tuple.96, operand 3
+<85 copy.44 @0>
+ positions:
+  copy.44
+  tuple.96 {4}
+ uses:
+  tuple.96, operand 4
+<86 copy.45 @0>
+ positions:
+  copy.45
+  tuple.96 {5}
+ uses:
+  tuple.96, operand 5
+<87 copy.46 @0>
+ positions:
+  copy.46
+  tuple.96 {6}
+ uses:
+  tuple.96, operand 6
+<88 copy.47 @0>
+ positions:
+  copy.47
+  tuple.96 {7}
+ uses:
+  tuple.96, operand 7
+<89 tuple.96{} @0>
+ positions:
+  tuple.96 {}
+ uses:
+<90 constant.310 @0>
+ positions:
+  constant.310
+ uses:
+  compare.14, operand 1
+<91 compare.14 @0>
+ positions:
+  compare.14
+ uses:
+<92 constant.313 @0>
+ positions:
+  constant.313
+ uses:
+  add.132, operand 1
+<93 add.132 @0>
+ positions:
+  add.132
+  tuple.99 {0}
+ uses:
+  tuple.99, operand 0
+<94 copy.56 @0>
+ positions:
+  copy.56
+  p.7
+ uses:
+  call.2, operand 4
+  add.132, operand 0
+  fusion.4.clone, operand 4
+<95 copy.57 @0>
+ positions:
+  copy.57
+  p.6
+  p.11
+ uses:
+  call.2, operand 3
+  call.3, operand 3
+  fusion.4.clone, operand 3
+  fusion.5.clone, operand 3
+<96 copy.58 @0>
+ positions:
+  copy.58
+  p.5
+  p.10
+ uses:
+  call.2, operand 2
+  call.3, operand 2
+  fusion.4.clone, operand 2
+  fusion.5.clone, operand 2
+<97 copy.59 @0>
+ positions:
+  copy.59
+  p.8
+ uses:
+  call.3, operand 0
+  copy.69, operand 0
+  fusion.5.clone, operand 0
+<98 copy.60 @0>
+ positions:
+  copy.60
+  p.3
+ uses:
+  call.2, operand 0
+  copy.67, operand 0
+  fusion.4.clone, operand 0
+<99 copy.61 @0>
+ positions:
+  copy.61
+ uses:
+  copy.68, operand 0
+<100 copy.62 @0>
+ positions:
+  copy.62
+  p.4
+  p.9
+ uses:
+  call.2, operand 1
+  copy.71, operand 0
+  call.3, operand 1
+  fusion.4.clone, operand 1
+  fusion.5.clone, operand 1
+<101 copy.63 @0>
+ positions:
+  copy.63
+ uses:
+  copy.70, operand 0
+<102 copy.67 @0>
+ positions:
+  copy.67
+  tuple.99 {3}
+ uses:
+  tuple.99, operand 3
+<103 copy.68 @0>
+ positions:
+  copy.68
+  tuple.99 {4}
+ uses:
+  tuple.99, operand 4
+<104 copy.69 @0>
+ positions:
+  copy.69
+  tuple.99 {5}
+ uses:
+  tuple.99, operand 5
+<105 copy.70 @0>
+ positions:
+  copy.70
+  tuple.99 {6}
+ uses:
+  tuple.99, operand 6
+<106 copy.71 @0>
+ positions:
+  copy.71
+  tuple.99 {7}
+ uses:
+  tuple.99, operand 7
+<107 tuple.99{} @0>
+ positions:
+  tuple.99 {}
+ uses:
+<108 constant.323 @0>
+ positions:
+  constant.323
+ uses:
+  compare.15, operand 1
+<109 compare.15 @0>
+ positions:
+  compare.15
+ uses:
+<110 constant.326 @0>
+ positions:
+  constant.326
+ uses:
+  add.141, operand 1
+<111 add.141 @0>
+ positions:
+  add.141
+  tuple.102 {0}
+ uses:
+  tuple.102, operand 0
+<112 fusion.6 @0>
+ positions:
+  fusion.6
+  tuple.102 {2}
+ uses:
+  tuple.102, operand 2
+<113 fusion.7 @0>
+ positions:
+  fusion.7
+  tuple.102 {1}
+ uses:
+  tuple.102, operand 1
+<114 copy.80 @0>
+ positions:
+  copy.80
+ uses:
+  fusion.6, operand 4
+  add.141, operand 0
+<115 copy.81 @0>
+ positions:
+  copy.81
+ uses:
+  fusion.6, operand 3
+  fusion.7, operand 3
+<116 copy.82 @0>
+ positions:
+  copy.82
+ uses:
+  fusion.6, operand 2
+  fusion.7, operand 2
+<117 copy.83 @0>
+ positions:
+  copy.83
+ uses:
+  fusion.7, operand 0
+  copy.93, operand 0
+<118 copy.84 @0>
+ positions:
+  copy.84
+ uses:
+  fusion.6, operand 0
+  copy.91, operand 0
+<119 copy.85 @0>
+ positions:
+  copy.85
+ uses:
+  copy.92, operand 0
+<120 copy.86 @0>
+ positions:
+  copy.86
+ uses:
+  fusion.6, operand 1
+  copy.95, operand 0
+  fusion.7, operand 1
+<121 copy.87 @0>
+ positions:
+  copy.87
+ uses:
+  copy.94, operand 0
+<122 copy.91 @0>
+ positions:
+  copy.91
+  tuple.102 {3}
+ uses:
+  tuple.102, operand 3
+<123 copy.92 @0>
+ positions:
+  copy.92
+  tuple.102 {4}
+ uses:
+  tuple.102, operand 4
+<124 copy.93 @0>
+ positions:
+  copy.93
+  tuple.102 {5}
+ uses:
+  tuple.102, operand 5
+<125 copy.94 @0>
+ positions:
+  copy.94
+  tuple.102 {6}
+ uses:
+  tuple.102, operand 6
+<126 copy.95 @0>
+ positions:
+  copy.95
+  tuple.102 {7}
+ uses:
+  tuple.102, operand 7
+<127 tuple.102{} @0>
+ positions:
+  tuple.102 {}
+ uses:
+<558 broadcast.1342.clone @0>
+ positions:
+  broadcast.1342.clone
+  call
+ uses:
+  convolution.1343, operand 0
+<559 reduce-window.1355.clone @0>
+ positions:
+  reduce-window.1355.clone
+  tuple.1356 {0}
+  call.1
+ uses:
+  tuple.1356, operand 0
+<613 fusion.4.clone @0>
+ positions:
+  fusion.4.clone
+  call.2
+  tuple.99 {2}
+ uses:
+  tuple.99, operand 2
+<652 fusion.5.clone @0>
+ positions:
+  fusion.5.clone
+  call.3
+  tuple.99 {1}
+ uses:
+  tuple.99, operand 1
+<767 fusion.8.clone @0>
+ positions:
+  fusion.8.clone
+  call.4
+  p.1
+ uses:
+  call.1, operand 0
+  reduce-window.1355.clone, operand 0
+<879 fusion.16.clone @0>
+ positions:
+  fusion.16.clone
+  call.5
+ uses:
+  convolution.1343, operand 1
+<880 while.14{} (phi) @0>
+ positions:
+  while.14 {}
+ uses:
+  get-tuple-element.454, operand 0 {}
+  get-tuple-element.453, operand 0 {}
+<881 while.15{} (phi) @0>
+ positions:
+  while.15 {}
+ uses:
+  get-tuple-element.505, operand 0 {}
+  get-tuple-element.504, operand 0 {}
+<882 while.16{} (phi) @0>
+ positions:
+  while.16 {}
+ uses:
+  get-tuple-element.556, operand 0 {}
+  get-tuple-element.555, operand 0 {}
+<883 while.17{} (phi) @0>
+ positions:
+  while.17 {}
+ uses:
+  get-tuple-element.607, operand 0 {}
+  get-tuple-element.606, operand 0 {}
+<884 parameter.0{} (phi) @0>
+ positions:
+  parameter.0 {}
+ uses:
+  get-tuple-element.395, operand 0 {}
+<885 parameter.1{} (phi) @0>
+ positions:
+  parameter.1 {}
+ uses:
+  get-tuple-element.628, operand 0 {}
+  get-tuple-element.627, operand 0 {}
+  get-tuple-element.626, operand 0 {}
+  get-tuple-element.625, operand 0 {}
+  get-tuple-element.624, operand 0 {}
+  get-tuple-element.623, operand 0 {}
+  get-tuple-element.622, operand 0 {}
+  get-tuple-element.621, operand 0 {}
+<886 parameter.2{} (phi) @0>
+ positions:
+  parameter.2 {}
+ uses:
+  get-tuple-element.467, operand 0 {}
+<887 parameter.3{} (phi) @0>
+ positions:
+  parameter.3 {}
+ uses:
+  get-tuple-element.652, operand 0 {}
+  get-tuple-element.651, operand 0 {}
+  get-tuple-element.650, operand 0 {}
+  get-tuple-element.649, operand 0 {}
+  get-tuple-element.648, operand 0 {}
+  get-tuple-element.647, operand 0 {}
+  get-tuple-element.646, operand 0 {}
+  get-tuple-element.645, operand 0 {}
+<888 parameter.4{} (phi) @0>
+ positions:
+  parameter.4 {}
+ uses:
+  get-tuple-element.518, operand 0 {}
+<889 parameter.5{} (phi) @0>
+ positions:
+  parameter.5 {}
+ uses:
+  get-tuple-element.676, operand 0 {}
+  get-tuple-element.675, operand 0 {}
+  get-tuple-element.674, operand 0 {}
+  get-tuple-element.673, operand 0 {}
+  get-tuple-element.672, operand 0 {}
+  get-tuple-element.671, operand 0 {}
+  get-tuple-element.670, operand 0 {}
+  get-tuple-element.669, operand 0 {}
+<890 parameter.6{} (phi) @0>
+ positions:
+  parameter.6 {}
+ uses:
+  get-tuple-element.569, operand 0 {}
+<891 parameter.7{} (phi) @0>
+ positions:
+  parameter.7 {}
+ uses:
+  get-tuple-element.701, operand 0 {}
+  get-tuple-element.700, operand 0 {}
+  get-tuple-element.699, operand 0 {}
+  get-tuple-element.698, operand 0 {}
+  get-tuple-element.697, operand 0 {}
+  get-tuple-element.696, operand 0 {}
+  get-tuple-element.695, operand 0 {}
+  get-tuple-element.694, operand 0 {}
+<892 while.14{0} (phi) @0>
+ positions:
+  while.14 {0}
+ uses:
+<893 while.14{1} (phi) @0>
+ positions:
+  while.14 {1}
+  get-tuple-element.453
+ uses:
+  fusion.26, operand 0
+  fusion.22, operand 0
+  fusion.23, operand 0
+  fusion.24, operand 0
+  fusion.25, operand 0
+<894 while.14{2} (phi) @0>
+ positions:
+  while.14 {2}
+  get-tuple-element.454
+ uses:
+  fusion.26, operand 1
+  fusion.22, operand 1
+  fusion.23, operand 1
+  fusion.24, operand 1
+  fusion.25, operand 1
+<895 while.14{3} (phi) @0>
+ positions:
+  while.14 {3}
+ uses:
+<896 while.14{4} (phi) @0>
+ positions:
+  while.14 {4}
+ uses:
+<897 while.14{5} (phi) @0>
+ positions:
+  while.14 {5}
+ uses:
+<898 while.14{6} (phi) @0>
+ positions:
+  while.14 {6}
+ uses:
+<899 while.14{7} (phi) @0>
+ positions:
+  while.14 {7}
+ uses:
+<900 while.15{0} (phi) @0>
+ positions:
+  while.15 {0}
+ uses:
+<901 while.15{1} (phi) @0>
+ positions:
+  while.15 {1}
+  get-tuple-element.504
+ uses:
+  fusion.21, operand 0
+  fusion.15, operand 0
+  fusion.19, operand 0
+  fusion.11, operand 0
+  fusion.12, operand 0
+  fusion.13, operand 0
+  fusion.14, operand 0
+  fusion.17, operand 0
+  fusion.18, operand 0
+  fusion.20, operand 0
+<902 while.15{2} (phi) @0>
+ positions:
+  while.15 {2}
+  get-tuple-element.505
+ uses:
+  fusion.15, operand 1
+  fusion.11, operand 1
+  fusion.12, operand 1
+  fusion.13, operand 1
+  fusion.14, operand 1
+<903 while.15{3} (phi) @0>
+ positions:
+  while.15 {3}
+ uses:
+<904 while.15{4} (phi) @0>
+ positions:
+  while.15 {4}
+ uses:
+<905 while.15{5} (phi) @0>
+ positions:
+  while.15 {5}
+ uses:
+<906 while.15{6} (phi) @0>
+ positions:
+  while.15 {6}
+ uses:
+<907 while.15{7} (phi) @0>
+ positions:
+  while.15 {7}
+ uses:
+<908 while.16{0} (phi) @0>
+ positions:
+  while.16 {0}
+ uses:
+<909 while.16{1} (phi) @0>
+ positions:
+  while.16 {1}
+  get-tuple-element.555
+  p.17
+ uses:
+  call.5, operand 0
+  fusion.16.clone, operand 0
+<910 while.16{2} (phi) @0>
+ positions:
+  while.16 {2}
+  get-tuple-element.556
+  p.18
+ uses:
+  call.5, operand 1
+  fusion.16.clone, operand 1
+<911 while.16{3} (phi) @0>
+ positions:
+  while.16 {3}
+ uses:
+<912 while.16{4} (phi) @0>
+ positions:
+  while.16 {4}
+ uses:
+<913 while.16{5} (phi) @0>
+ positions:
+  while.16 {5}
+ uses:
+<914 while.16{6} (phi) @0>
+ positions:
+  while.16 {6}
+ uses:
+<915 while.16{7} (phi) @0>
+ positions:
+  while.16 {7}
+ uses:
+<916 while.17{0} (phi) @0>
+ positions:
+  while.17 {0}
+ uses:
+<917 while.17{1} (phi) @0>
+ positions:
+  while.17 {1}
+  get-tuple-element.606
+  p.15
+ uses:
+  fusion.10, operand 0
+  call.4, operand 3
+  fusion.8.clone, operand 3
+<918 while.17{2} (phi) @0>
+ positions:
+  while.17 {2}
+  get-tuple-element.607
+  p.16
+ uses:
+  fusion.10, operand 1
+  call.4, operand 4
+  fusion.8.clone, operand 4
+<919 while.17{3} (phi) @0>
+ positions:
+  while.17 {3}
+ uses:
+<920 while.17{4} (phi) @0>
+ positions:
+  while.17 {4}
+ uses:
+<921 while.17{5} (phi) @0>
+ positions:
+  while.17 {5}
+ uses:
+<922 while.17{6} (phi) @0>
+ positions:
+  while.17 {6}
+ uses:
+<923 while.17{7} (phi) @0>
+ positions:
+  while.17 {7}
+ uses:
+<924 parameter.1{0} (phi) @0>
+ positions:
+  parameter.1 {0}
+  get-tuple-element.621
+ uses:
+  copy.8, operand 0
+<925 parameter.1{1} (phi) @0>
+ positions:
+  parameter.1 {1}
+  get-tuple-element.622
+ uses:
+  copy.9, operand 0
+<926 parameter.1{2} (phi) @0>
+ positions:
+  parameter.1 {2}
+  get-tuple-element.623
+ uses:
+  copy.10, operand 0
+<927 parameter.1{3} (phi) @0>
+ positions:
+  parameter.1 {3}
+  get-tuple-element.624
+ uses:
+  copy.11, operand 0
+<928 parameter.1{4} (phi) @0>
+ positions:
+  parameter.1 {4}
+  get-tuple-element.625
+ uses:
+  copy.12, operand 0
+<929 parameter.1{5} (phi) @0>
+ positions:
+  parameter.1 {5}
+  get-tuple-element.626
+ uses:
+  copy.13, operand 0
+<930 parameter.1{6} (phi) @0>
+ positions:
+  parameter.1 {6}
+  get-tuple-element.627
+ uses:
+  copy.14, operand 0
+<931 parameter.1{7} (phi) @0>
+ positions:
+  parameter.1 {7}
+  get-tuple-element.628
+ uses:
+  copy.15, operand 0
+<932 parameter.0{0} (phi) @0>
+ positions:
+  parameter.0 {0}
+  get-tuple-element.395
+ uses:
+  compare.12, operand 0
+<933 parameter.0{1} (phi) @0>
+ positions:
+  parameter.0 {1}
+ uses:
+<934 parameter.0{2} (phi) @0>
+ positions:
+  parameter.0 {2}
+ uses:
+<935 parameter.0{3} (phi) @0>
+ positions:
+  parameter.0 {3}
+ uses:
+<936 parameter.0{4} (phi) @0>
+ positions:
+  parameter.0 {4}
+ uses:
+<937 parameter.0{5} (phi) @0>
+ positions:
+  parameter.0 {5}
+ uses:
+<938 parameter.0{6} (phi) @0>
+ positions:
+  parameter.0 {6}
+ uses:
+<939 parameter.0{7} (phi) @0>
+ positions:
+  parameter.0 {7}
+ uses:
+<940 parameter.3{0} (phi) @0>
+ positions:
+  parameter.3 {0}
+  get-tuple-element.645
+ uses:
+  copy.32, operand 0
+<941 parameter.3{1} (phi) @0>
+ positions:
+  parameter.3 {1}
+  get-tuple-element.646
+ uses:
+  copy.33, operand 0
+<942 parameter.3{2} (phi) @0>
+ positions:
+  parameter.3 {2}
+  get-tuple-element.647
+ uses:
+  copy.34, operand 0
+<943 parameter.3{3} (phi) @0>
+ positions:
+  parameter.3 {3}
+  get-tuple-element.648
+ uses:
+  copy.35, operand 0
+<944 parameter.3{4} (phi) @0>
+ positions:
+  parameter.3 {4}
+  get-tuple-element.649
+ uses:
+  copy.36, operand 0
+<945 parameter.3{5} (phi) @0>
+ positions:
+  parameter.3 {5}
+  get-tuple-element.650
+ uses:
+  copy.37, operand 0
+<946 parameter.3{6} (phi) @0>
+ positions:
+  parameter.3 {6}
+  get-tuple-element.651
+ uses:
+  copy.38, operand 0
+<947 parameter.3{7} (phi) @0>
+ positions:
+  parameter.3 {7}
+  get-tuple-element.652
+ uses:
+  copy.39, operand 0
+<948 parameter.2{0} (phi) @0>
+ positions:
+  parameter.2 {0}
+  get-tuple-element.467
+ uses:
+  compare.13, operand 0
+<949 parameter.2{1} (phi) @0>
+ positions:
+  parameter.2 {1}
+ uses:
+<950 parameter.2{2} (phi) @0>
+ positions:
+  parameter.2 {2}
+ uses:
+<951 parameter.2{3} (phi) @0>
+ positions:
+  parameter.2 {3}
+ uses:
+<952 parameter.2{4} (phi) @0>
+ positions:
+  parameter.2 {4}
+ uses:
+<953 parameter.2{5} (phi) @0>
+ positions:
+  parameter.2 {5}
+ uses:
+<954 parameter.2{6} (phi) @0>
+ positions:
+  parameter.2 {6}
+ uses:
+<955 parameter.2{7} (phi) @0>
+ positions:
+  parameter.2 {7}
+ uses:
+<956 parameter.5{0} (phi) @0>
+ positions:
+  parameter.5 {0}
+  get-tuple-element.669
+ uses:
+  copy.56, operand 0
+<957 parameter.5{1} (phi) @0>
+ positions:
+  parameter.5 {1}
+  get-tuple-element.670
+ uses:
+  copy.57, operand 0
+<958 parameter.5{2} (phi) @0>
+ positions:
+  parameter.5 {2}
+  get-tuple-element.671
+ uses:
+  copy.58, operand 0
+<959 parameter.5{3} (phi) @0>
+ positions:
+  parameter.5 {3}
+  get-tuple-element.672
+ uses:
+  copy.59, operand 0
+<960 parameter.5{4} (phi) @0>
+ positions:
+  parameter.5 {4}
+  get-tuple-element.673
+ uses:
+  copy.60, operand 0
+<961 parameter.5{5} (phi) @0>
+ positions:
+  parameter.5 {5}
+  get-tuple-element.674
+ uses:
+  copy.61, operand 0
+<962 parameter.5{6} (phi) @0>
+ positions:
+  parameter.5 {6}
+  get-tuple-element.675
+ uses:
+  copy.62, operand 0
+<963 parameter.5{7} (phi) @0>
+ positions:
+  parameter.5 {7}
+  get-tuple-element.676
+ uses:
+  copy.63, operand 0
+<964 parameter.4{0} (phi) @0>
+ positions:
+  parameter.4 {0}
+  get-tuple-element.518
+ uses:
+  compare.14, operand 0
+<965 parameter.4{1} (phi) @0>
+ positions:
+  parameter.4 {1}
+ uses:
+<966 parameter.4{2} (phi) @0>
+ positions:
+  parameter.4 {2}
+ uses:
+<967 parameter.4{3} (phi) @0>
+ positions:
+  parameter.4 {3}
+ uses:
+<968 parameter.4{4} (phi) @0>
+ positions:
+  parameter.4 {4}
+ uses:
+<969 parameter.4{5} (phi) @0>
+ positions:
+  parameter.4 {5}
+ uses:
+<970 parameter.4{6} (phi) @0>
+ positions:
+  parameter.4 {6}
+ uses:
+<971 parameter.4{7} (phi) @0>
+ positions:
+  parameter.4 {7}
+ uses:
+<972 parameter.7{0} (phi) @0>
+ positions:
+  parameter.7 {0}
+  get-tuple-element.694
+ uses:
+  copy.80, operand 0
+<973 parameter.7{1} (phi) @0>
+ positions:
+  parameter.7 {1}
+  get-tuple-element.695
+ uses:
+  copy.81, operand 0
+<974 parameter.7{2} (phi) @0>
+ positions:
+  parameter.7 {2}
+  get-tuple-element.696
+ uses:
+  copy.82, operand 0
+<975 parameter.7{3} (phi) @0>
+ positions:
+  parameter.7 {3}
+  get-tuple-element.697
+ uses:
+  copy.83, operand 0
+<976 parameter.7{4} (phi) @0>
+ positions:
+  parameter.7 {4}
+  get-tuple-element.698
+ uses:
+  copy.84, operand 0
+<977 parameter.7{5} (phi) @0>
+ positions:
+  parameter.7 {5}
+  get-tuple-element.699
+ uses:
+  copy.85, operand 0
+<978 parameter.7{6} (phi) @0>
+ positions:
+  parameter.7 {6}
+  get-tuple-element.700
+ uses:
+  copy.86, operand 0
+<979 parameter.7{7} (phi) @0>
+ positions:
+  parameter.7 {7}
+  get-tuple-element.701
+ uses:
+  copy.87, operand 0
+<980 parameter.6{0} (phi) @0>
+ positions:
+  parameter.6 {0}
+  get-tuple-element.569
+ uses:
+  compare.15, operand 0
+<981 parameter.6{1} (phi) @0>
+ positions:
+  parameter.6 {1}
+ uses:
+<982 parameter.6{2} (phi) @0>
+ positions:
+  parameter.6 {2}
+ uses:
+<983 parameter.6{3} (phi) @0>
+ positions:
+  parameter.6 {3}
+ uses:
+<984 parameter.6{4} (phi) @0>
+ positions:
+  parameter.6 {4}
+ uses:
+<985 parameter.6{5} (phi) @0>
+ positions:
+  parameter.6 {5}
+ uses:
+<986 parameter.6{6} (phi) @0>
+ positions:
+  parameter.6 {6}
+ uses:
+<987 parameter.6{7} (phi) @0>
+ positions:
+  parameter.6 {7}
+ uses:

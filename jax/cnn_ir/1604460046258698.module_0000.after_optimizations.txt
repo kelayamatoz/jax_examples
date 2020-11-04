@@ -1,0 +1,1098 @@
+HloModule jit_test_conv2d.1357
+
+%fused_computation (param_0.2: u32[], param_1.5: u32[4], param_2.6: u32[2], param_3.7: u32[2], param_4.12: s32[]) -> u32[2] {
+  %param_3.7 = u32[2]{0} parameter(3)
+  %param_2.6 = u32[2]{0} parameter(2)
+  %add.161 = u32[2]{0} add(u32[2]{0} %param_3.7, u32[2]{0} %param_2.6), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_1.5 = u32[4]{0} parameter(1)
+  %slice.85 = u32[1]{0} slice(u32[4]{0} %param_1.5), slice={[0:1]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(1,)\n                  start_indices=(0,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.108 = u32[] reshape(u32[1]{0} %slice.85), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.211 = u32[2]{0} broadcast(u32[] %reshape.108), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.19 = u32[2]{0} shift-left(u32[2]{0} %param_2.6, u32[2]{0} %broadcast.211), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.547 = u32[] constant(32), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.36 = u32[] subtract(u32[] %constant.547, u32[] %reshape.108), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.209 = u32[2]{0} broadcast(u32[] %subtract.36), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.25 = u32[2]{0} shift-right-logical(u32[2]{0} %param_2.6, u32[2]{0} %broadcast.209), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.25 = u32[2]{0} or(u32[2]{0} %shift-left.19, u32[2]{0} %shift-right-logical.25), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.48 = u32[2]{0} xor(u32[2]{0} %add.161, u32[2]{0} %or.25), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.160 = u32[2]{0} add(u32[2]{0} %add.161, u32[2]{0} %xor.48), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.84 = u32[1]{0} slice(u32[4]{0} %param_1.5), slice={[1:2]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(2,)\n                  start_indices=(1,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.107 = u32[] reshape(u32[1]{0} %slice.84), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.208 = u32[2]{0} broadcast(u32[] %reshape.107), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.18 = u32[2]{0} shift-left(u32[2]{0} %xor.48, u32[2]{0} %broadcast.208), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.35 = u32[] subtract(u32[] %constant.547, u32[] %reshape.107), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.207 = u32[2]{0} broadcast(u32[] %subtract.35), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.24 = u32[2]{0} shift-right-logical(u32[2]{0} %xor.48, u32[2]{0} %broadcast.207), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.24 = u32[2]{0} or(u32[2]{0} %shift-left.18, u32[2]{0} %shift-right-logical.24), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.46 = u32[2]{0} xor(u32[2]{0} %add.160, u32[2]{0} %or.24), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.159 = u32[2]{0} add(u32[2]{0} %add.160, u32[2]{0} %xor.46), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.83 = u32[1]{0} slice(u32[4]{0} %param_1.5), slice={[2:3]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(3,)\n                  start_indices=(2,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.106 = u32[] reshape(u32[1]{0} %slice.83), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.206 = u32[2]{0} broadcast(u32[] %reshape.106), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.17 = u32[2]{0} shift-left(u32[2]{0} %xor.46, u32[2]{0} %broadcast.206), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.34 = u32[] subtract(u32[] %constant.547, u32[] %reshape.106), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.204 = u32[2]{0} broadcast(u32[] %subtract.34), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.23 = u32[2]{0} shift-right-logical(u32[2]{0} %xor.46, u32[2]{0} %broadcast.204), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.23 = u32[2]{0} or(u32[2]{0} %shift-left.17, u32[2]{0} %shift-right-logical.23), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.45 = u32[2]{0} xor(u32[2]{0} %add.159, u32[2]{0} %or.23), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.158 = u32[2]{0} add(u32[2]{0} %add.159, u32[2]{0} %xor.45), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.82 = u32[1]{0} slice(u32[4]{0} %param_1.5), slice={[3:4]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(4,)\n                  start_indices=(3,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.104 = u32[] reshape(u32[1]{0} %slice.82), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.203 = u32[2]{0} broadcast(u32[] %reshape.104), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.16 = u32[2]{0} shift-left(u32[2]{0} %xor.45, u32[2]{0} %broadcast.203), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.33 = u32[] subtract(u32[] %constant.547, u32[] %reshape.104), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.202 = u32[2]{0} broadcast(u32[] %subtract.33), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.22 = u32[2]{0} shift-right-logical(u32[2]{0} %xor.45, u32[2]{0} %broadcast.202), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.22 = u32[2]{0} or(u32[2]{0} %shift-left.16, u32[2]{0} %shift-right-logical.22), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.44 = u32[2]{0} xor(u32[2]{0} %add.158, u32[2]{0} %or.22), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_0.2 = u32[] parameter(0)
+  %broadcast.200 = u32[2]{0} broadcast(u32[] %param_0.2), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.157 = u32[2]{0} add(u32[2]{0} %xor.44, u32[2]{0} %broadcast.200), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_4.12 = s32[] parameter(4)
+  %constant.548 = s32[] constant(1), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.162 = s32[] add(s32[] %param_4.12, s32[] %constant.548), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %convert.6 = u32[] convert(s32[] %add.162), metadata={op_type="convert_element_type" op_name="while/body/convert_element_type[ new_dtype=uint32\n                                 old_dtype=int32 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.199 = u32[2]{0} broadcast(u32[] %convert.6), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.156 = u32[2]{0} add(u32[2]{0} %add.157, u32[2]{0} %broadcast.199), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.1 (param_0.4: u32[], param_1.11: u32[4], param_2.14: u32[2], param_3.17: u32[2]) -> u32[2] {
+  %param_3.17 = u32[2]{0} parameter(3)
+  %param_2.14 = u32[2]{0} parameter(2)
+  %add.167 = u32[2]{0} add(u32[2]{0} %param_3.17, u32[2]{0} %param_2.14), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_1.11 = u32[4]{0} parameter(1)
+  %slice.88 = u32[1]{0} slice(u32[4]{0} %param_1.11), slice={[0:1]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(1,)\n                  start_indices=(0,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.111 = u32[] reshape(u32[1]{0} %slice.88), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.221 = u32[2]{0} broadcast(u32[] %reshape.111), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.22 = u32[2]{0} shift-left(u32[2]{0} %param_2.14, u32[2]{0} %broadcast.221), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.550 = u32[] constant(32), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.39 = u32[] subtract(u32[] %constant.550, u32[] %reshape.111), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.219 = u32[2]{0} broadcast(u32[] %subtract.39), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.28 = u32[2]{0} shift-right-logical(u32[2]{0} %param_2.14, u32[2]{0} %broadcast.219), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.28 = u32[2]{0} or(u32[2]{0} %shift-left.22, u32[2]{0} %shift-right-logical.28), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.51 = u32[2]{0} xor(u32[2]{0} %add.167, u32[2]{0} %or.28), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.166 = u32[2]{0} add(u32[2]{0} %add.167, u32[2]{0} %xor.51), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.87 = u32[1]{0} slice(u32[4]{0} %param_1.11), slice={[1:2]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(2,)\n                  start_indices=(1,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.110 = u32[] reshape(u32[1]{0} %slice.87), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.217 = u32[2]{0} broadcast(u32[] %reshape.110), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.21 = u32[2]{0} shift-left(u32[2]{0} %xor.51, u32[2]{0} %broadcast.217), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.38 = u32[] subtract(u32[] %constant.550, u32[] %reshape.110), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.216 = u32[2]{0} broadcast(u32[] %subtract.38), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.27 = u32[2]{0} shift-right-logical(u32[2]{0} %xor.51, u32[2]{0} %broadcast.216), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.27 = u32[2]{0} or(u32[2]{0} %shift-left.21, u32[2]{0} %shift-right-logical.27), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.50 = u32[2]{0} xor(u32[2]{0} %add.166, u32[2]{0} %or.27), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.165 = u32[2]{0} add(u32[2]{0} %add.166, u32[2]{0} %xor.50), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.86 = u32[1]{0} slice(u32[4]{0} %param_1.11), slice={[2:3]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(3,)\n                  start_indices=(2,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.109 = u32[] reshape(u32[1]{0} %slice.86), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.215 = u32[2]{0} broadcast(u32[] %reshape.109), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.20 = u32[2]{0} shift-left(u32[2]{0} %xor.50, u32[2]{0} %broadcast.215), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.37 = u32[] subtract(u32[] %constant.550, u32[] %reshape.109), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.213 = u32[2]{0} broadcast(u32[] %subtract.37), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.26 = u32[2]{0} shift-right-logical(u32[2]{0} %xor.50, u32[2]{0} %broadcast.213), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.26 = u32[2]{0} or(u32[2]{0} %shift-left.20, u32[2]{0} %shift-right-logical.26), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.49 = u32[2]{0} xor(u32[2]{0} %add.165, u32[2]{0} %or.26), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.164 = u32[2]{0} add(u32[2]{0} %add.165, u32[2]{0} %xor.49), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_0.4 = u32[] parameter(0)
+  %broadcast.212 = u32[2]{0} broadcast(u32[] %param_0.4), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.163 = u32[2]{0} add(u32[2]{0} %add.164, u32[2]{0} %broadcast.212), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%body_computation.17.clone (parameter.1: (s32[], u32[2], u32[2], u32[], u32[], u32[], u32[4], u32[4])) -> (s32[], u32[2], u32[2], u32[], u32[], u32[], u32[4], u32[4]) {
+  %parameter.1 = (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) parameter(0)
+  %get-tuple-element.621 = s32[] get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.1), index=0
+  %copy.8 = s32[] copy(s32[] %get-tuple-element.621)
+  %constant.286 = s32[] constant(1), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.112 = s32[] add(s32[] %copy.8, s32[] %constant.286), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %get-tuple-element.624 = u32[] get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.1), index=3
+  %copy.11 = u32[] copy(u32[] %get-tuple-element.624)
+  %get-tuple-element.627 = u32[4]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.1), index=6
+  %copy.14 = u32[4]{0} copy(u32[4]{0} %get-tuple-element.627)
+  %get-tuple-element.623 = u32[2]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.1), index=2
+  %copy.10 = u32[2]{0} copy(u32[2]{0} %get-tuple-element.623)
+  %get-tuple-element.622 = u32[2]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.1), index=1
+  %copy.9 = u32[2]{0} copy(u32[2]{0} %get-tuple-element.622)
+  %fusion.1 = u32[2]{0} fusion(u32[] %copy.11, u32[4]{0} %copy.14, u32[2]{0} %copy.10, u32[2]{0} %copy.9), kind=kLoop, calls=%fused_computation.1, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %get-tuple-element.625 = u32[] get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.1), index=4
+  %copy.12 = u32[] copy(u32[] %get-tuple-element.625)
+  %fusion = u32[2]{0} fusion(u32[] %copy.12, u32[4]{0} %copy.14, u32[2]{0} %copy.10, u32[2]{0} %copy.9, s32[] %copy.8), kind=kLoop, calls=%fused_computation, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %copy.19 = u32[] copy(u32[] %copy.12), control-predecessors={%copy.11}
+  %get-tuple-element.626 = u32[] get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.1), index=5
+  %copy.13 = u32[] copy(u32[] %get-tuple-element.626)
+  %copy.20 = u32[] copy(u32[] %copy.13), control-predecessors={%copy.12}
+  %copy.21 = u32[] copy(u32[] %copy.11), control-predecessors={%copy.13}
+  %get-tuple-element.628 = u32[4]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.1), index=7
+  %copy.15 = u32[4]{0} copy(u32[4]{0} %get-tuple-element.628)
+  %copy.22 = u32[4]{0} copy(u32[4]{0} %copy.15), control-predecessors={%copy.14}
+  %copy.23 = u32[4]{0} copy(u32[4]{0} %copy.14), control-predecessors={%copy.15}
+  ROOT %tuple.93 = (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) tuple(s32[] %add.112, u32[2]{0} %fusion.1, u32[2]{0} %fusion, u32[] %copy.19, u32[] %copy.20, u32[] %copy.21, u32[4]{0} %copy.22, u32[4]{0} %copy.23)
+}
+
+%cond_computation.85.clone (parameter.0: (s32[], u32[2], u32[2], u32[], u32[], u32[], u32[4], u32[4])) -> pred[] {
+  %parameter.0 = (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) parameter(0)
+  %get-tuple-element.395 = s32[] get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.0), index=0
+  %constant.283 = s32[] constant(5), metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %compare.12 = pred[] compare(s32[] %get-tuple-element.395, s32[] %constant.283), direction=LT, type=UNSIGNED, metadata={op_type="lt" op_name="while/cond/lt" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.2 (param_0.7: u32[], param_1.17: u32[4], param_2.21: u32[2], param_3.25: u32[2], param_4.41: s32[]) -> u32[2] {
+  %param_3.25 = u32[2]{0} parameter(3)
+  %param_2.21 = u32[2]{0} parameter(2)
+  %add.174 = u32[2]{0} add(u32[2]{0} %param_3.25, u32[2]{0} %param_2.21), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_1.17 = u32[4]{0} parameter(1)
+  %slice.92 = u32[1]{0} slice(u32[4]{0} %param_1.17), slice={[0:1]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(1,)\n                  start_indices=(0,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.115 = u32[] reshape(u32[1]{0} %slice.92), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.232 = u32[2]{0} broadcast(u32[] %reshape.115), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.26 = u32[2]{0} shift-left(u32[2]{0} %param_2.21, u32[2]{0} %broadcast.232), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.551 = u32[] constant(32), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.44 = u32[] subtract(u32[] %constant.551, u32[] %reshape.115), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.231 = u32[2]{0} broadcast(u32[] %subtract.44), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.32 = u32[2]{0} shift-right-logical(u32[2]{0} %param_2.21, u32[2]{0} %broadcast.231), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.32 = u32[2]{0} or(u32[2]{0} %shift-left.26, u32[2]{0} %shift-right-logical.32), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.55 = u32[2]{0} xor(u32[2]{0} %add.174, u32[2]{0} %or.32), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.172 = u32[2]{0} add(u32[2]{0} %add.174, u32[2]{0} %xor.55), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.91 = u32[1]{0} slice(u32[4]{0} %param_1.17), slice={[1:2]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(2,)\n                  start_indices=(1,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.114 = u32[] reshape(u32[1]{0} %slice.91), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.230 = u32[2]{0} broadcast(u32[] %reshape.114), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.25 = u32[2]{0} shift-left(u32[2]{0} %xor.55, u32[2]{0} %broadcast.230), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.42 = u32[] subtract(u32[] %constant.551, u32[] %reshape.114), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.229 = u32[2]{0} broadcast(u32[] %subtract.42), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.31 = u32[2]{0} shift-right-logical(u32[2]{0} %xor.55, u32[2]{0} %broadcast.229), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.31 = u32[2]{0} or(u32[2]{0} %shift-left.25, u32[2]{0} %shift-right-logical.31), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.54 = u32[2]{0} xor(u32[2]{0} %add.172, u32[2]{0} %or.31), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.171 = u32[2]{0} add(u32[2]{0} %add.172, u32[2]{0} %xor.54), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.90 = u32[1]{0} slice(u32[4]{0} %param_1.17), slice={[2:3]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(3,)\n                  start_indices=(2,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.113 = u32[] reshape(u32[1]{0} %slice.90), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.228 = u32[2]{0} broadcast(u32[] %reshape.113), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.24 = u32[2]{0} shift-left(u32[2]{0} %xor.54, u32[2]{0} %broadcast.228), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.41 = u32[] subtract(u32[] %constant.551, u32[] %reshape.113), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.227 = u32[2]{0} broadcast(u32[] %subtract.41), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.30 = u32[2]{0} shift-right-logical(u32[2]{0} %xor.54, u32[2]{0} %broadcast.227), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.30 = u32[2]{0} or(u32[2]{0} %shift-left.24, u32[2]{0} %shift-right-logical.30), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.53 = u32[2]{0} xor(u32[2]{0} %add.171, u32[2]{0} %or.30), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.170 = u32[2]{0} add(u32[2]{0} %add.171, u32[2]{0} %xor.53), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.89 = u32[1]{0} slice(u32[4]{0} %param_1.17), slice={[3:4]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(4,)\n                  start_indices=(3,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.112 = u32[] reshape(u32[1]{0} %slice.89), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.226 = u32[2]{0} broadcast(u32[] %reshape.112), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.23 = u32[2]{0} shift-left(u32[2]{0} %xor.53, u32[2]{0} %broadcast.226), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.40 = u32[] subtract(u32[] %constant.551, u32[] %reshape.112), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.224 = u32[2]{0} broadcast(u32[] %subtract.40), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.29 = u32[2]{0} shift-right-logical(u32[2]{0} %xor.53, u32[2]{0} %broadcast.224), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.29 = u32[2]{0} or(u32[2]{0} %shift-left.23, u32[2]{0} %shift-right-logical.29), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.52 = u32[2]{0} xor(u32[2]{0} %add.170, u32[2]{0} %or.29), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_0.7 = u32[] parameter(0)
+  %broadcast.223 = u32[2]{0} broadcast(u32[] %param_0.7), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.169 = u32[2]{0} add(u32[2]{0} %xor.52, u32[2]{0} %broadcast.223), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_4.41 = s32[] parameter(4)
+  %constant.553 = s32[] constant(1), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.175 = s32[] add(s32[] %param_4.41, s32[] %constant.553), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %convert.7 = u32[] convert(s32[] %add.175), metadata={op_type="convert_element_type" op_name="while/body/convert_element_type[ new_dtype=uint32\n                                 old_dtype=int32 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.222 = u32[2]{0} broadcast(u32[] %convert.7), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.168 = u32[2]{0} add(u32[2]{0} %add.169, u32[2]{0} %broadcast.222), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.3 (param_0.9: u32[], param_1.23: u32[4], param_2.29: u32[2], param_3.35: u32[2]) -> u32[2] {
+  %param_3.35 = u32[2]{0} parameter(3)
+  %param_2.29 = u32[2]{0} parameter(2)
+  %add.180 = u32[2]{0} add(u32[2]{0} %param_3.35, u32[2]{0} %param_2.29), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_1.23 = u32[4]{0} parameter(1)
+  %slice.95 = u32[1]{0} slice(u32[4]{0} %param_1.23), slice={[0:1]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(1,)\n                  start_indices=(0,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.118 = u32[] reshape(u32[1]{0} %slice.95), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.239 = u32[2]{0} broadcast(u32[] %reshape.118), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.29 = u32[2]{0} shift-left(u32[2]{0} %param_2.29, u32[2]{0} %broadcast.239), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.554 = u32[] constant(32), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.47 = u32[] subtract(u32[] %constant.554, u32[] %reshape.118), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.238 = u32[2]{0} broadcast(u32[] %subtract.47), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.35 = u32[2]{0} shift-right-logical(u32[2]{0} %param_2.29, u32[2]{0} %broadcast.238), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.35 = u32[2]{0} or(u32[2]{0} %shift-left.29, u32[2]{0} %shift-right-logical.35), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.59 = u32[2]{0} xor(u32[2]{0} %add.180, u32[2]{0} %or.35), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.179 = u32[2]{0} add(u32[2]{0} %add.180, u32[2]{0} %xor.59), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.94 = u32[1]{0} slice(u32[4]{0} %param_1.23), slice={[1:2]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(2,)\n                  start_indices=(1,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.117 = u32[] reshape(u32[1]{0} %slice.94), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.237 = u32[2]{0} broadcast(u32[] %reshape.117), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.28 = u32[2]{0} shift-left(u32[2]{0} %xor.59, u32[2]{0} %broadcast.237), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.46 = u32[] subtract(u32[] %constant.554, u32[] %reshape.117), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.236 = u32[2]{0} broadcast(u32[] %subtract.46), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.34 = u32[2]{0} shift-right-logical(u32[2]{0} %xor.59, u32[2]{0} %broadcast.236), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.34 = u32[2]{0} or(u32[2]{0} %shift-left.28, u32[2]{0} %shift-right-logical.34), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.58 = u32[2]{0} xor(u32[2]{0} %add.179, u32[2]{0} %or.34), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.178 = u32[2]{0} add(u32[2]{0} %add.179, u32[2]{0} %xor.58), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.93 = u32[1]{0} slice(u32[4]{0} %param_1.23), slice={[2:3]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(3,)\n                  start_indices=(2,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.116 = u32[] reshape(u32[1]{0} %slice.93), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.235 = u32[2]{0} broadcast(u32[] %reshape.116), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.27 = u32[2]{0} shift-left(u32[2]{0} %xor.58, u32[2]{0} %broadcast.235), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.45 = u32[] subtract(u32[] %constant.554, u32[] %reshape.116), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.234 = u32[2]{0} broadcast(u32[] %subtract.45), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.33 = u32[2]{0} shift-right-logical(u32[2]{0} %xor.58, u32[2]{0} %broadcast.234), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.33 = u32[2]{0} or(u32[2]{0} %shift-left.27, u32[2]{0} %shift-right-logical.33), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.57 = u32[2]{0} xor(u32[2]{0} %add.178, u32[2]{0} %or.33), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.177 = u32[2]{0} add(u32[2]{0} %add.178, u32[2]{0} %xor.57), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_0.9 = u32[] parameter(0)
+  %broadcast.233 = u32[2]{0} broadcast(u32[] %param_0.9), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.176 = u32[2]{0} add(u32[2]{0} %add.177, u32[2]{0} %broadcast.233), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%body_computation__1.160.clone (parameter.3: (s32[], u32[2], u32[2], u32[], u32[], u32[], u32[4], u32[4])) -> (s32[], u32[2], u32[2], u32[], u32[], u32[], u32[4], u32[4]) {
+  %parameter.3 = (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) parameter(0)
+  %get-tuple-element.645 = s32[] get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.3), index=0
+  %copy.32 = s32[] copy(s32[] %get-tuple-element.645)
+  %constant.298 = s32[] constant(1), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.123 = s32[] add(s32[] %copy.32, s32[] %constant.298), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %get-tuple-element.648 = u32[] get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.3), index=3
+  %copy.35 = u32[] copy(u32[] %get-tuple-element.648)
+  %get-tuple-element.651 = u32[4]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.3), index=6
+  %copy.38 = u32[4]{0} copy(u32[4]{0} %get-tuple-element.651)
+  %get-tuple-element.647 = u32[2]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.3), index=2
+  %copy.34 = u32[2]{0} copy(u32[2]{0} %get-tuple-element.647)
+  %get-tuple-element.646 = u32[2]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.3), index=1
+  %copy.33 = u32[2]{0} copy(u32[2]{0} %get-tuple-element.646)
+  %fusion.3 = u32[2]{0} fusion(u32[] %copy.35, u32[4]{0} %copy.38, u32[2]{0} %copy.34, u32[2]{0} %copy.33), kind=kLoop, calls=%fused_computation.3, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %get-tuple-element.649 = u32[] get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.3), index=4
+  %copy.36 = u32[] copy(u32[] %get-tuple-element.649)
+  %fusion.2 = u32[2]{0} fusion(u32[] %copy.36, u32[4]{0} %copy.38, u32[2]{0} %copy.34, u32[2]{0} %copy.33, s32[] %copy.32), kind=kLoop, calls=%fused_computation.2, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %copy.43 = u32[] copy(u32[] %copy.36), control-predecessors={%copy.35}
+  %get-tuple-element.650 = u32[] get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.3), index=5
+  %copy.37 = u32[] copy(u32[] %get-tuple-element.650)
+  %copy.44 = u32[] copy(u32[] %copy.37), control-predecessors={%copy.36}
+  %copy.45 = u32[] copy(u32[] %copy.35), control-predecessors={%copy.37}
+  %get-tuple-element.652 = u32[4]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.3), index=7
+  %copy.39 = u32[4]{0} copy(u32[4]{0} %get-tuple-element.652)
+  %copy.46 = u32[4]{0} copy(u32[4]{0} %copy.39), control-predecessors={%copy.38}
+  %copy.47 = u32[4]{0} copy(u32[4]{0} %copy.38), control-predecessors={%copy.39}
+  ROOT %tuple.96 = (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) tuple(s32[] %add.123, u32[2]{0} %fusion.3, u32[2]{0} %fusion.2, u32[] %copy.43, u32[] %copy.44, u32[] %copy.45, u32[4]{0} %copy.46, u32[4]{0} %copy.47)
+}
+
+%cond_computation__1.228.clone (parameter.2: (s32[], u32[2], u32[2], u32[], u32[], u32[], u32[4], u32[4])) -> pred[] {
+  %parameter.2 = (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) parameter(0)
+  %get-tuple-element.467 = s32[] get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.2), index=0
+  %constant.295 = s32[] constant(5), metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %compare.13 = pred[] compare(s32[] %get-tuple-element.467, s32[] %constant.295), direction=LT, type=UNSIGNED, metadata={op_type="lt" op_name="while/cond/lt" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.4.clone (param_0.91: u32[], param_1.135: u32[4], param_2.119: u32[2304], param_3.121: u32[2304], param_4.161: s32[]) -> u32[2304] {
+  %param_3.121 = u32[2304]{0} parameter(3)
+  %param_2.119 = u32[2304]{0} parameter(2)
+  %add.247 = u32[2304]{0} add(u32[2304]{0} %param_3.121, u32[2304]{0} %param_2.119), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_1.135 = u32[4]{0} parameter(1)
+  %slice.149 = u32[1]{0} slice(u32[4]{0} %param_1.135), slice={[0:1]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(1,)\n                  start_indices=(0,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.180 = u32[] reshape(u32[1]{0} %slice.149), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.361 = u32[2304]{0} broadcast(u32[] %reshape.180), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.45 = u32[2304]{0} shift-left(u32[2304]{0} %param_2.119, u32[2304]{0} %broadcast.361), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.669 = u32[] constant(32), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.67 = u32[] subtract(u32[] %constant.669, u32[] %reshape.180), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.360 = u32[2304]{0} broadcast(u32[] %subtract.67), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.55 = u32[2304]{0} shift-right-logical(u32[2304]{0} %param_2.119, u32[2304]{0} %broadcast.360), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.54 = u32[2304]{0} or(u32[2304]{0} %shift-left.45, u32[2304]{0} %shift-right-logical.55), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.82 = u32[2304]{0} xor(u32[2304]{0} %add.247, u32[2304]{0} %or.54), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.248 = u32[2304]{0} add(u32[2304]{0} %add.247, u32[2304]{0} %xor.82), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.148 = u32[1]{0} slice(u32[4]{0} %param_1.135), slice={[1:2]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(2,)\n                  start_indices=(1,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.178 = u32[] reshape(u32[1]{0} %slice.148), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.362 = u32[2304]{0} broadcast(u32[] %reshape.178), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.46 = u32[2304]{0} shift-left(u32[2304]{0} %xor.82, u32[2304]{0} %broadcast.362), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.66 = u32[] subtract(u32[] %constant.669, u32[] %reshape.178), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.358 = u32[2304]{0} broadcast(u32[] %subtract.66), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.56 = u32[2304]{0} shift-right-logical(u32[2304]{0} %xor.82, u32[2304]{0} %broadcast.358), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.56 = u32[2304]{0} or(u32[2304]{0} %shift-left.46, u32[2304]{0} %shift-right-logical.56), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.83 = u32[2304]{0} xor(u32[2304]{0} %add.248, u32[2304]{0} %or.56), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.249 = u32[2304]{0} add(u32[2304]{0} %add.248, u32[2304]{0} %xor.83), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.147 = u32[1]{0} slice(u32[4]{0} %param_1.135), slice={[2:3]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(3,)\n                  start_indices=(2,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.176 = u32[] reshape(u32[1]{0} %slice.147), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.364 = u32[2304]{0} broadcast(u32[] %reshape.176), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.47 = u32[2304]{0} shift-left(u32[2304]{0} %xor.83, u32[2304]{0} %broadcast.364), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.65 = u32[] subtract(u32[] %constant.669, u32[] %reshape.176), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.357 = u32[2304]{0} broadcast(u32[] %subtract.65), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.57 = u32[2304]{0} shift-right-logical(u32[2304]{0} %xor.83, u32[2304]{0} %broadcast.357), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.57 = u32[2304]{0} or(u32[2304]{0} %shift-left.47, u32[2304]{0} %shift-right-logical.57), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.84 = u32[2304]{0} xor(u32[2304]{0} %add.249, u32[2304]{0} %or.57), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.250 = u32[2304]{0} add(u32[2304]{0} %add.249, u32[2304]{0} %xor.84), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.146 = u32[1]{0} slice(u32[4]{0} %param_1.135), slice={[3:4]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(4,)\n                  start_indices=(3,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.174 = u32[] reshape(u32[1]{0} %slice.146), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.365 = u32[2304]{0} broadcast(u32[] %reshape.174), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.48 = u32[2304]{0} shift-left(u32[2304]{0} %xor.84, u32[2304]{0} %broadcast.365), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.64 = u32[] subtract(u32[] %constant.669, u32[] %reshape.174), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.356 = u32[2304]{0} broadcast(u32[] %subtract.64), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.58 = u32[2304]{0} shift-right-logical(u32[2304]{0} %xor.84, u32[2304]{0} %broadcast.356), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.58 = u32[2304]{0} or(u32[2304]{0} %shift-left.48, u32[2304]{0} %shift-right-logical.58), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.85 = u32[2304]{0} xor(u32[2304]{0} %add.250, u32[2304]{0} %or.58), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_0.91 = u32[] parameter(0)
+  %broadcast.355 = u32[2304]{0} broadcast(u32[] %param_0.91), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.251 = u32[2304]{0} add(u32[2304]{0} %xor.85, u32[2304]{0} %broadcast.355), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_4.161 = s32[] parameter(4)
+  %constant.667 = s32[] constant(1), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.246 = s32[] add(s32[] %param_4.161, s32[] %constant.667), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %convert.11 = u32[] convert(s32[] %add.246), metadata={op_type="convert_element_type" op_name="while/body/convert_element_type[ new_dtype=uint32\n                                 old_dtype=int32 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.353 = u32[2304]{0} broadcast(u32[] %convert.11), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.252 = u32[2304]{0} add(u32[2304]{0} %add.251, u32[2304]{0} %broadcast.353), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%parallel_fusion.4 (p.3: u32[], p.4: u32[4], p.5: u32[2304], p.6: u32[2304], p.7: s32[]) -> u32[2304] {
+  %p.3 = u32[] parameter(0)
+  %p.4 = u32[4]{0} parameter(1)
+  %p.5 = u32[2304]{0} parameter(2)
+  %p.6 = u32[2304]{0} parameter(3)
+  %p.7 = s32[] parameter(4)
+  ROOT %fusion.4.clone = u32[2304]{0} fusion(u32[] %p.3, u32[4]{0} %p.4, u32[2304]{0} %p.5, u32[2304]{0} %p.6, s32[] %p.7), kind=kLoop, calls=%fused_computation.4.clone, outer_dimension_partitions={3}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.5.clone (param_0.92: u32[], param_1.136: u32[4], param_2.120: u32[2304], param_3.122: u32[2304]) -> u32[2304] {
+  %param_3.122 = u32[2304]{0} parameter(3)
+  %param_2.120 = u32[2304]{0} parameter(2)
+  %add.253 = u32[2304]{0} add(u32[2304]{0} %param_3.122, u32[2304]{0} %param_2.120), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_1.136 = u32[4]{0} parameter(1)
+  %slice.152 = u32[1]{0} slice(u32[4]{0} %param_1.136), slice={[0:1]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(1,)\n                  start_indices=(0,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.184 = u32[] reshape(u32[1]{0} %slice.152), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.372 = u32[2304]{0} broadcast(u32[] %reshape.184), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.49 = u32[2304]{0} shift-left(u32[2304]{0} %param_2.120, u32[2304]{0} %broadcast.372), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.670 = u32[] constant(32), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.71 = u32[] subtract(u32[] %constant.670, u32[] %reshape.184), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.371 = u32[2304]{0} broadcast(u32[] %subtract.71), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.59 = u32[2304]{0} shift-right-logical(u32[2304]{0} %param_2.120, u32[2304]{0} %broadcast.371), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.59 = u32[2304]{0} or(u32[2304]{0} %shift-left.49, u32[2304]{0} %shift-right-logical.59), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.86 = u32[2304]{0} xor(u32[2304]{0} %add.253, u32[2304]{0} %or.59), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.254 = u32[2304]{0} add(u32[2304]{0} %add.253, u32[2304]{0} %xor.86), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.151 = u32[1]{0} slice(u32[4]{0} %param_1.136), slice={[1:2]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(2,)\n                  start_indices=(1,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.183 = u32[] reshape(u32[1]{0} %slice.151), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.373 = u32[2304]{0} broadcast(u32[] %reshape.183), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.51 = u32[2304]{0} shift-left(u32[2304]{0} %xor.86, u32[2304]{0} %broadcast.373), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.69 = u32[] subtract(u32[] %constant.670, u32[] %reshape.183), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.370 = u32[2304]{0} broadcast(u32[] %subtract.69), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.60 = u32[2304]{0} shift-right-logical(u32[2304]{0} %xor.86, u32[2304]{0} %broadcast.370), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.60 = u32[2304]{0} or(u32[2304]{0} %shift-left.51, u32[2304]{0} %shift-right-logical.60), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.87 = u32[2304]{0} xor(u32[2304]{0} %add.254, u32[2304]{0} %or.60), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.255 = u32[2304]{0} add(u32[2304]{0} %add.254, u32[2304]{0} %xor.87), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.150 = u32[1]{0} slice(u32[4]{0} %param_1.136), slice={[2:3]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(3,)\n                  start_indices=(2,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.182 = u32[] reshape(u32[1]{0} %slice.150), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.375 = u32[2304]{0} broadcast(u32[] %reshape.182), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.52 = u32[2304]{0} shift-left(u32[2304]{0} %xor.87, u32[2304]{0} %broadcast.375), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.68 = u32[] subtract(u32[] %constant.670, u32[] %reshape.182), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.368 = u32[2304]{0} broadcast(u32[] %subtract.68), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.61 = u32[2304]{0} shift-right-logical(u32[2304]{0} %xor.87, u32[2304]{0} %broadcast.368), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.61 = u32[2304]{0} or(u32[2304]{0} %shift-left.52, u32[2304]{0} %shift-right-logical.61), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.88 = u32[2304]{0} xor(u32[2304]{0} %add.255, u32[2304]{0} %or.61), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.256 = u32[2304]{0} add(u32[2304]{0} %add.255, u32[2304]{0} %xor.88), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_0.92 = u32[] parameter(0)
+  %broadcast.366 = u32[2304]{0} broadcast(u32[] %param_0.92), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.257 = u32[2304]{0} add(u32[2304]{0} %add.256, u32[2304]{0} %broadcast.366), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%parallel_fusion.5 (p.8: u32[], p.9: u32[4], p.10: u32[2304], p.11: u32[2304]) -> u32[2304] {
+  %p.8 = u32[] parameter(0)
+  %p.9 = u32[4]{0} parameter(1)
+  %p.10 = u32[2304]{0} parameter(2)
+  %p.11 = u32[2304]{0} parameter(3)
+  ROOT %fusion.5.clone = u32[2304]{0} fusion(u32[] %p.8, u32[4]{0} %p.9, u32[2304]{0} %p.10, u32[2304]{0} %p.11), kind=kLoop, calls=%fused_computation.5.clone, outer_dimension_partitions={3}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%body_computation__2.309.clone (parameter.5: (s32[], u32[2304], u32[2304], u32[], u32[], u32[], u32[4], u32[4])) -> (s32[], u32[2304], u32[2304], u32[], u32[], u32[], u32[4], u32[4]) {
+  %parameter.5 = (s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) parameter(0)
+  %get-tuple-element.669 = s32[] get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.5), index=0
+  %copy.56 = s32[] copy(s32[] %get-tuple-element.669)
+  %constant.313 = s32[] constant(1), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.132 = s32[] add(s32[] %copy.56, s32[] %constant.313), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %get-tuple-element.672 = u32[] get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.5), index=3
+  %copy.59 = u32[] copy(u32[] %get-tuple-element.672)
+  %get-tuple-element.675 = u32[4]{0} get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.5), index=6
+  %copy.62 = u32[4]{0} copy(u32[4]{0} %get-tuple-element.675)
+  %get-tuple-element.671 = u32[2304]{0} get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.5), index=2
+  %copy.58 = u32[2304]{0} copy(u32[2304]{0} %get-tuple-element.671)
+  %get-tuple-element.670 = u32[2304]{0} get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.5), index=1
+  %copy.57 = u32[2304]{0} copy(u32[2304]{0} %get-tuple-element.670)
+  %call.3 = u32[2304]{0} call(u32[] %copy.59, u32[4]{0} %copy.62, u32[2304]{0} %copy.58, u32[2304]{0} %copy.57), to_apply=%parallel_fusion.5
+  %get-tuple-element.673 = u32[] get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.5), index=4
+  %copy.60 = u32[] copy(u32[] %get-tuple-element.673)
+  %call.2 = u32[2304]{0} call(u32[] %copy.60, u32[4]{0} %copy.62, u32[2304]{0} %copy.58, u32[2304]{0} %copy.57, s32[] %copy.56), to_apply=%parallel_fusion.4
+  %copy.67 = u32[] copy(u32[] %copy.60), control-predecessors={%copy.59}
+  %get-tuple-element.674 = u32[] get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.5), index=5
+  %copy.61 = u32[] copy(u32[] %get-tuple-element.674)
+  %copy.68 = u32[] copy(u32[] %copy.61), control-predecessors={%copy.60}
+  %copy.69 = u32[] copy(u32[] %copy.59), control-predecessors={%copy.61}
+  %get-tuple-element.676 = u32[4]{0} get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.5), index=7
+  %copy.63 = u32[4]{0} copy(u32[4]{0} %get-tuple-element.676)
+  %copy.70 = u32[4]{0} copy(u32[4]{0} %copy.63), control-predecessors={%copy.62}
+  %copy.71 = u32[4]{0} copy(u32[4]{0} %copy.62), control-predecessors={%copy.63}
+  ROOT %tuple.99 = (s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) tuple(s32[] %add.132, u32[2304]{0} %call.3, u32[2304]{0} %call.2, u32[] %copy.67, u32[] %copy.68, u32[] %copy.69, u32[4]{0} %copy.70, u32[4]{0} %copy.71)
+}
+
+%cond_computation__2.377.clone (parameter.4: (s32[], u32[2304], u32[2304], u32[], u32[], u32[], u32[4], u32[4])) -> pred[] {
+  %parameter.4 = (s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) parameter(0)
+  %get-tuple-element.518 = s32[] get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.4), index=0
+  %constant.310 = s32[] constant(5), metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %compare.14 = pred[] compare(s32[] %get-tuple-element.518, s32[] %constant.310), direction=LT, type=UNSIGNED, metadata={op_type="lt" op_name="while/cond/lt" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.6 (param_0.17: u32[], param_1.41: u32[4], param_2.51: u32[16], param_3.61: u32[16], param_4.99: s32[]) -> u32[16] {
+  %param_3.61 = u32[16]{0} parameter(3)
+  %param_2.51 = u32[16]{0} parameter(2)
+  %add.201 = u32[16]{0} add(u32[16]{0} %param_3.61, u32[16]{0} %param_2.51), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_1.41 = u32[4]{0} parameter(1)
+  %slice.110 = u32[1]{0} slice(u32[4]{0} %param_1.41), slice={[0:1]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(1,)\n                  start_indices=(0,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.129 = u32[] reshape(u32[1]{0} %slice.110), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.268 = u32[16]{0} broadcast(u32[] %reshape.129), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.40 = u32[16]{0} shift-left(u32[16]{0} %param_2.51, u32[16]{0} %broadcast.268), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.560 = u32[] constant(32), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.59 = u32[] subtract(u32[] %constant.560, u32[] %reshape.129), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.267 = u32[16]{0} broadcast(u32[] %subtract.59), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.47 = u32[16]{0} shift-right-logical(u32[16]{0} %param_2.51, u32[16]{0} %broadcast.267), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.47 = u32[16]{0} or(u32[16]{0} %shift-left.40, u32[16]{0} %shift-right-logical.47), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.71 = u32[16]{0} xor(u32[16]{0} %add.201, u32[16]{0} %or.47), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.199 = u32[16]{0} add(u32[16]{0} %add.201, u32[16]{0} %xor.71), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.109 = u32[1]{0} slice(u32[4]{0} %param_1.41), slice={[1:2]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(2,)\n                  start_indices=(1,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.128 = u32[] reshape(u32[1]{0} %slice.109), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.266 = u32[16]{0} broadcast(u32[] %reshape.128), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.39 = u32[16]{0} shift-left(u32[16]{0} %xor.71, u32[16]{0} %broadcast.266), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.58 = u32[] subtract(u32[] %constant.560, u32[] %reshape.128), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.265 = u32[16]{0} broadcast(u32[] %subtract.58), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.46 = u32[16]{0} shift-right-logical(u32[16]{0} %xor.71, u32[16]{0} %broadcast.265), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.45 = u32[16]{0} or(u32[16]{0} %shift-left.39, u32[16]{0} %shift-right-logical.46), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.70 = u32[16]{0} xor(u32[16]{0} %add.199, u32[16]{0} %or.45), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.198 = u32[16]{0} add(u32[16]{0} %add.199, u32[16]{0} %xor.70), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.108 = u32[1]{0} slice(u32[4]{0} %param_1.41), slice={[2:3]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(3,)\n                  start_indices=(2,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.127 = u32[] reshape(u32[1]{0} %slice.108), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.264 = u32[16]{0} broadcast(u32[] %reshape.127), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.38 = u32[16]{0} shift-left(u32[16]{0} %xor.70, u32[16]{0} %broadcast.264), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.57 = u32[] subtract(u32[] %constant.560, u32[] %reshape.127), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.263 = u32[16]{0} broadcast(u32[] %subtract.57), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.44 = u32[16]{0} shift-right-logical(u32[16]{0} %xor.70, u32[16]{0} %broadcast.263), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.44 = u32[16]{0} or(u32[16]{0} %shift-left.38, u32[16]{0} %shift-right-logical.44), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.69 = u32[16]{0} xor(u32[16]{0} %add.198, u32[16]{0} %or.44), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.197 = u32[16]{0} add(u32[16]{0} %add.198, u32[16]{0} %xor.69), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.105 = u32[1]{0} slice(u32[4]{0} %param_1.41), slice={[3:4]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(4,)\n                  start_indices=(3,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.126 = u32[] reshape(u32[1]{0} %slice.105), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.262 = u32[16]{0} broadcast(u32[] %reshape.126), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.37 = u32[16]{0} shift-left(u32[16]{0} %xor.69, u32[16]{0} %broadcast.262), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.56 = u32[] subtract(u32[] %constant.560, u32[] %reshape.126), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.261 = u32[16]{0} broadcast(u32[] %subtract.56), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.43 = u32[16]{0} shift-right-logical(u32[16]{0} %xor.69, u32[16]{0} %broadcast.261), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.43 = u32[16]{0} or(u32[16]{0} %shift-left.37, u32[16]{0} %shift-right-logical.43), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.68 = u32[16]{0} xor(u32[16]{0} %add.197, u32[16]{0} %or.43), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_0.17 = u32[] parameter(0)
+  %broadcast.260 = u32[16]{0} broadcast(u32[] %param_0.17), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.196 = u32[16]{0} add(u32[16]{0} %xor.68, u32[16]{0} %broadcast.260), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_4.99 = s32[] parameter(4)
+  %constant.562 = s32[] constant(1), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.202 = s32[] add(s32[] %param_4.99, s32[] %constant.562), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %convert.10 = u32[] convert(s32[] %add.202), metadata={op_type="convert_element_type" op_name="while/body/convert_element_type[ new_dtype=uint32\n                                 old_dtype=int32 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.258 = u32[16]{0} broadcast(u32[] %convert.10), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.195 = u32[16]{0} add(u32[16]{0} %add.196, u32[16]{0} %broadcast.258), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.7 (param_0.19: u32[], param_1.47: u32[4], param_2.59: u32[16], param_3.71: u32[16]) -> u32[16] {
+  %param_3.71 = u32[16]{0} parameter(3)
+  %param_2.59 = u32[16]{0} parameter(2)
+  %add.207 = u32[16]{0} add(u32[16]{0} %param_3.71, u32[16]{0} %param_2.59), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_1.47 = u32[4]{0} parameter(1)
+  %slice.113 = u32[1]{0} slice(u32[4]{0} %param_1.47), slice={[0:1]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(1,)\n                  start_indices=(0,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.132 = u32[] reshape(u32[1]{0} %slice.113), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.275 = u32[16]{0} broadcast(u32[] %reshape.132), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.44 = u32[16]{0} shift-left(u32[16]{0} %param_2.59, u32[16]{0} %broadcast.275), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.563 = u32[] constant(32), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.63 = u32[] subtract(u32[] %constant.563, u32[] %reshape.132), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.274 = u32[16]{0} broadcast(u32[] %subtract.63), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.50 = u32[16]{0} shift-right-logical(u32[16]{0} %param_2.59, u32[16]{0} %broadcast.274), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.50 = u32[16]{0} or(u32[16]{0} %shift-left.44, u32[16]{0} %shift-right-logical.50), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.75 = u32[16]{0} xor(u32[16]{0} %add.207, u32[16]{0} %or.50), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.206 = u32[16]{0} add(u32[16]{0} %add.207, u32[16]{0} %xor.75), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.112 = u32[1]{0} slice(u32[4]{0} %param_1.47), slice={[1:2]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(2,)\n                  start_indices=(1,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.131 = u32[] reshape(u32[1]{0} %slice.112), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.273 = u32[16]{0} broadcast(u32[] %reshape.131), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.43 = u32[16]{0} shift-left(u32[16]{0} %xor.75, u32[16]{0} %broadcast.273), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.62 = u32[] subtract(u32[] %constant.563, u32[] %reshape.131), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.272 = u32[16]{0} broadcast(u32[] %subtract.62), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.49 = u32[16]{0} shift-right-logical(u32[16]{0} %xor.75, u32[16]{0} %broadcast.272), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.49 = u32[16]{0} or(u32[16]{0} %shift-left.43, u32[16]{0} %shift-right-logical.49), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.73 = u32[16]{0} xor(u32[16]{0} %add.206, u32[16]{0} %or.49), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.205 = u32[16]{0} add(u32[16]{0} %add.206, u32[16]{0} %xor.73), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %slice.111 = u32[1]{0} slice(u32[4]{0} %param_1.47), slice={[2:3]}, metadata={op_type="slice" op_name="while/body/slice[ limit_indices=(3,)\n                  start_indices=(2,)\n                  strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %reshape.130 = u32[] reshape(u32[1]{0} %slice.111), metadata={op_type="squeeze" op_name="while/body/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.271 = u32[16]{0} broadcast(u32[] %reshape.130), dimensions={}, metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-left.42 = u32[16]{0} shift-left(u32[16]{0} %xor.73, u32[16]{0} %broadcast.271), metadata={op_type="shift_left" op_name="while/body/shift_left" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %subtract.60 = u32[] subtract(u32[] %constant.563, u32[] %reshape.130), metadata={op_type="sub" op_name="while/body/sub" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %broadcast.270 = u32[16]{0} broadcast(u32[] %subtract.60), dimensions={}, metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %shift-right-logical.48 = u32[16]{0} shift-right-logical(u32[16]{0} %xor.73, u32[16]{0} %broadcast.270), metadata={op_type="shift_right_logical" op_name="while/body/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %or.48 = u32[16]{0} or(u32[16]{0} %shift-left.42, u32[16]{0} %shift-right-logical.48), metadata={op_type="or" op_name="while/body/or" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %xor.72 = u32[16]{0} xor(u32[16]{0} %add.205, u32[16]{0} %or.48), metadata={op_type="xor" op_name="while/body/xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.204 = u32[16]{0} add(u32[16]{0} %add.205, u32[16]{0} %xor.72), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %param_0.19 = u32[] parameter(0)
+  %broadcast.269 = u32[16]{0} broadcast(u32[] %param_0.19), dimensions={}, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.203 = u32[16]{0} add(u32[16]{0} %add.204, u32[16]{0} %broadcast.269), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%body_computation__3.792.clone (parameter.7: (s32[], u32[16], u32[16], u32[], u32[], u32[], u32[4], u32[4])) -> (s32[], u32[16], u32[16], u32[], u32[], u32[], u32[4], u32[4]) {
+  %parameter.7 = (s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) parameter(0)
+  %get-tuple-element.694 = s32[] get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.7), index=0
+  %copy.80 = s32[] copy(s32[] %get-tuple-element.694)
+  %constant.326 = s32[] constant(1), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %add.141 = s32[] add(s32[] %copy.80, s32[] %constant.326), metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %get-tuple-element.697 = u32[] get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.7), index=3
+  %copy.83 = u32[] copy(u32[] %get-tuple-element.697)
+  %get-tuple-element.700 = u32[4]{0} get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.7), index=6
+  %copy.86 = u32[4]{0} copy(u32[4]{0} %get-tuple-element.700)
+  %get-tuple-element.696 = u32[16]{0} get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.7), index=2
+  %copy.82 = u32[16]{0} copy(u32[16]{0} %get-tuple-element.696)
+  %get-tuple-element.695 = u32[16]{0} get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.7), index=1
+  %copy.81 = u32[16]{0} copy(u32[16]{0} %get-tuple-element.695)
+  %fusion.7 = u32[16]{0} fusion(u32[] %copy.83, u32[4]{0} %copy.86, u32[16]{0} %copy.82, u32[16]{0} %copy.81), kind=kLoop, calls=%fused_computation.7, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %get-tuple-element.698 = u32[] get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.7), index=4
+  %copy.84 = u32[] copy(u32[] %get-tuple-element.698)
+  %fusion.6 = u32[16]{0} fusion(u32[] %copy.84, u32[4]{0} %copy.86, u32[16]{0} %copy.82, u32[16]{0} %copy.81, s32[] %copy.80), kind=kLoop, calls=%fused_computation.6, metadata={op_type="add" op_name="while/body/add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %copy.91 = u32[] copy(u32[] %copy.84), control-predecessors={%copy.83}
+  %get-tuple-element.699 = u32[] get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.7), index=5
+  %copy.85 = u32[] copy(u32[] %get-tuple-element.699)
+  %copy.92 = u32[] copy(u32[] %copy.85), control-predecessors={%copy.84}
+  %copy.93 = u32[] copy(u32[] %copy.83), control-predecessors={%copy.85}
+  %get-tuple-element.701 = u32[4]{0} get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.7), index=7
+  %copy.87 = u32[4]{0} copy(u32[4]{0} %get-tuple-element.701)
+  %copy.94 = u32[4]{0} copy(u32[4]{0} %copy.87), control-predecessors={%copy.86}
+  %copy.95 = u32[4]{0} copy(u32[4]{0} %copy.86), control-predecessors={%copy.87}
+  ROOT %tuple.102 = (s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) tuple(s32[] %add.141, u32[16]{0} %fusion.7, u32[16]{0} %fusion.6, u32[] %copy.91, u32[] %copy.92, u32[] %copy.93, u32[4]{0} %copy.94, u32[4]{0} %copy.95)
+}
+
+%cond_computation__3.860.clone (parameter.6: (s32[], u32[16], u32[16], u32[], u32[], u32[], u32[4], u32[4])) -> pred[] {
+  %parameter.6 = (s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) parameter(0)
+  %get-tuple-element.569 = s32[] get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %parameter.6), index=0
+  %constant.323 = s32[] constant(5), metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %compare.15 = pred[] compare(s32[] %get-tuple-element.569, s32[] %constant.323), direction=LT, type=UNSIGNED, metadata={op_type="lt" op_name="while/cond/lt" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.9 (param_0.24: f32[1,1,1,32]) -> f32[1,1,1,32] {
+  %param_0.24 = f32[1,1,1,32]{3,2,1,0} parameter(0)
+  %negate.13 = f32[1,1,1,32]{3,2,1,0} negate(f32[1,1,1,32]{3,2,1,0} %param_0.24), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  ROOT %sqrt.2 = f32[1,1,1,32]{3,2,1,0} sqrt(f32[1,1,1,32]{3,2,1,0} %negate.13), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%fused_computation.10 (param_0.33: u32[16], param_1.61: u32[16]) -> f32[1,1,1,32] {
+  %constant.611 = f32[] constant(-0.99999994), metadata={op_type="xla_call" op_name="jit(test_conv2d)/jit(_normal)/xla_call[ backend=None\n                                        device=None\n                                        donated_invars=(False, False, False, False)\n                                        name=_uniform ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.311 = f32[32]{0} broadcast(f32[] %constant.611), dimensions={}, metadata={op_type="max" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/max" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_0.33 = u32[16]{0} parameter(0)
+  %param_1.61 = u32[16]{0} parameter(1)
+  %concatenate.15 = u32[32]{0} concatenate(u32[16]{0} %param_0.33, u32[16]{0} %param_1.61), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.615 = u32[] constant(9), metadata={op_type="shift_right_logical" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.310 = u32[32]{0} broadcast(u32[] %constant.615), dimensions={}, metadata={op_type="shift_right_logical" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %shift-right-logical.52 = u32[32]{0} shift-right-logical(u32[32]{0} %concatenate.15, u32[32]{0} %broadcast.310), metadata={op_type="shift_right_logical" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.614 = u32[] constant(1065353216), metadata={op_type="or" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/or" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.309 = u32[32]{0} broadcast(u32[] %constant.614), dimensions={}, metadata={op_type="or" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/or" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %or.52 = u32[32]{0} or(u32[32]{0} %shift-right-logical.52, u32[32]{0} %broadcast.309), metadata={op_type="or" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/or" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %bitcast-convert.7 = f32[32]{0} bitcast-convert(u32[32]{0} %or.52), metadata={op_type="bitcast_convert_type" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/bitcast_convert_type[ new_dtype=float32 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.612 = f32[] constant(-1)
+  %broadcast.308 = f32[32]{0} broadcast(f32[] %constant.612), dimensions={}
+  %add.227 = f32[32]{0} add(f32[32]{0} %bitcast-convert.7, f32[32]{0} %broadcast.308), metadata={op_type="sub" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/sub" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.609 = f32[] constant(2)
+  %broadcast.307 = f32[32]{0} broadcast(f32[] %constant.609), dimensions={}, metadata={op_type="mul" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/mul" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.117 = f32[32]{0} multiply(f32[32]{0} %add.227, f32[32]{0} %broadcast.307), metadata={op_type="mul" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/mul" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.225 = f32[32]{0} add(f32[32]{0} %multiply.117, f32[32]{0} %broadcast.311), metadata={op_type="add" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/add" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %maximum.8 = f32[32]{0} maximum(f32[32]{0} %broadcast.311, f32[32]{0} %add.225), metadata={op_type="max" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/max" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.135 = f32[1,1,1,32]{3,2,1,0} reshape(f32[32]{0} %maximum.8), metadata={op_type="max" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/max" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %negate.14 = f32[1,1,1,32]{3,2,1,0} negate(f32[1,1,1,32]{3,2,1,0} %reshape.135), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.116 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %negate.14, f32[1,1,1,32]{3,2,1,0} %reshape.135), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  ROOT %log-plus-one.2 = f32[1,1,1,32]{3,2,1,0} log-plus-one(f32[1,1,1,32]{3,2,1,0} %multiply.116), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%fused_computation.11 (param_0.36: u32[2], param_1.67: u32[2]) -> u32[] {
+  %param_0.36 = u32[2]{0} parameter(0)
+  %param_1.67 = u32[2]{0} parameter(1)
+  %concatenate.17 = u32[4]{0} concatenate(u32[2]{0} %param_0.36, u32[2]{0} %param_1.67), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.139 = u32[2,2]{1,0} reshape(u32[4]{0} %concatenate.17), metadata={op_type="reshape" op_name="jit(test_conv2d)/jit(_split)/reshape[ dimensions=None\n                                      new_sizes=(2, 2) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.116 = u32[1,1]{1,0} slice(u32[2,2]{1,0} %reshape.139), slice={[1:2], [0:1]}
+  %reshape.138 = u32[] reshape(u32[1,1]{1,0} %slice.116), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.115 = u32[1,2]{1,0} slice(u32[2,2]{1,0} %reshape.139), slice={[1:2], [0:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/slice[ limit_indices=(2, 2)\n                        start_indices=(1, 0)\n                        strides=(1, 1) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.137 = u32[2]{0} reshape(u32[1,2]{1,0} %slice.115), metadata={op_type="squeeze" op_name="jit(test_conv2d)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.114 = u32[1]{0} slice(u32[2]{0} %reshape.137), slice={[1:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                                      start_indices=(1,)\n                                                                      strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.136 = u32[] reshape(u32[1]{0} %slice.114), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %xor.77 = u32[] xor(u32[] %reshape.138, u32[] %reshape.136), metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.616 = u32[] constant(466688986), metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %xor.76 = u32[] xor(u32[] %xor.77, u32[] %constant.616), metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.12 (param_0.40: u32[2], param_1.77: u32[2]) -> u32[16] {
+  %iota.0 = u32[32]{0} iota(), iota_dimension=0
+  %slice.119 = u32[16]{0} slice(u32[32]{0} %iota.0), slice={[16:32]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/slice[ limit_indices=(32,)\n                                                                      start_indices=(16,)\n                                                                      strides=None ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_0.40 = u32[2]{0} parameter(0)
+  %param_1.77 = u32[2]{0} parameter(1)
+  %concatenate.18 = u32[4]{0} concatenate(u32[2]{0} %param_0.40, u32[2]{0} %param_1.77), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.142 = u32[2,2]{1,0} reshape(u32[4]{0} %concatenate.18), metadata={op_type="reshape" op_name="jit(test_conv2d)/jit(_split)/reshape[ dimensions=None\n                                      new_sizes=(2, 2) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.118 = u32[1,2]{1,0} slice(u32[2,2]{1,0} %reshape.142), slice={[1:2], [0:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/slice[ limit_indices=(2, 2)\n                        start_indices=(1, 0)\n                        strides=(1, 1) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.141 = u32[2]{0} reshape(u32[1,2]{1,0} %slice.118), metadata={op_type="squeeze" op_name="jit(test_conv2d)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.117 = u32[1]{0} slice(u32[2]{0} %reshape.141), slice={[1:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                                      start_indices=(1,)\n                                                                      strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.140 = u32[] reshape(u32[1]{0} %slice.117), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.312 = u32[16]{0} broadcast(u32[] %reshape.140), dimensions={}, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.228 = u32[16]{0} add(u32[16]{0} %slice.119, u32[16]{0} %broadcast.312), metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.13 (param_0.46: u32[2], param_1.78: u32[2]) -> u32[] {
+  %param_0.46 = u32[2]{0} parameter(0)
+  %param_1.78 = u32[2]{0} parameter(1)
+  %concatenate.19 = u32[4]{0} concatenate(u32[2]{0} %param_0.46, u32[2]{0} %param_1.78), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.145 = u32[2,2]{1,0} reshape(u32[4]{0} %concatenate.19), metadata={op_type="reshape" op_name="jit(test_conv2d)/jit(_split)/reshape[ dimensions=None\n                                      new_sizes=(2, 2) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.121 = u32[1,2]{1,0} slice(u32[2,2]{1,0} %reshape.145), slice={[1:2], [0:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/slice[ limit_indices=(2, 2)\n                        start_indices=(1, 0)\n                        strides=(1, 1) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.144 = u32[2]{0} reshape(u32[1,2]{1,0} %slice.121), metadata={op_type="squeeze" op_name="jit(test_conv2d)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.120 = u32[1]{0} slice(u32[2]{0} %reshape.144), slice={[1:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                                      start_indices=(1,)\n                                                                      strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  ROOT %reshape.143 = u32[] reshape(u32[1]{0} %slice.120), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%fused_computation.14 (param_0.48: u32[2], param_1.85: u32[2]) -> u32[16] {
+  %iota.7 = u32[32]{0} iota(), iota_dimension=0
+  %slice.123 = u32[16]{0} slice(u32[32]{0} %iota.7), slice={[0:16]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/slice[ limit_indices=(16,)\n                                                                      start_indices=(0,)\n                                                                      strides=None ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_0.48 = u32[2]{0} parameter(0)
+  %param_1.85 = u32[2]{0} parameter(1)
+  %concatenate.20 = u32[4]{0} concatenate(u32[2]{0} %param_0.48, u32[2]{0} %param_1.85), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.147 = u32[2,2]{1,0} reshape(u32[4]{0} %concatenate.20), metadata={op_type="reshape" op_name="jit(test_conv2d)/jit(_split)/reshape[ dimensions=None\n                                      new_sizes=(2, 2) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.122 = u32[1,1]{1,0} slice(u32[2,2]{1,0} %reshape.147), slice={[1:2], [0:1]}
+  %reshape.146 = u32[] reshape(u32[1,1]{1,0} %slice.122), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.313 = u32[16]{0} broadcast(u32[] %reshape.146), dimensions={}, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.229 = u32[16]{0} add(u32[16]{0} %slice.123, u32[16]{0} %broadcast.313), metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.15 (param_0.52: u32[2], param_1.86: u32[2]) -> u32[] {
+  %param_0.52 = u32[2]{0} parameter(0)
+  %param_1.86 = u32[2]{0} parameter(1)
+  %concatenate.21 = u32[4]{0} concatenate(u32[2]{0} %param_0.52, u32[2]{0} %param_1.86), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.149 = u32[2,2]{1,0} reshape(u32[4]{0} %concatenate.21), metadata={op_type="reshape" op_name="jit(test_conv2d)/jit(_split)/reshape[ dimensions=None\n                                      new_sizes=(2, 2) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.124 = u32[1,1]{1,0} slice(u32[2,2]{1,0} %reshape.149), slice={[1:2], [0:1]}
+  ROOT %reshape.148 = u32[] reshape(u32[1,1]{1,0} %slice.124), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%fused_computation.17 (param_0.61: u32[2]) -> u32[] {
+  %param_0.61 = u32[2]{0} parameter(0)
+  %slice.126 = u32[1]{0} slice(u32[2]{0} %param_0.61), slice={[0:1]}
+  %reshape.153 = u32[] reshape(u32[1]{0} %slice.126), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.125 = u32[1]{0} slice(u32[2]{0} %param_0.61), slice={[1:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                                                start_indices=(1,)\n                                                                                strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.151 = u32[] reshape(u32[1]{0} %slice.125), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %xor.79 = u32[] xor(u32[] %reshape.153, u32[] %reshape.151), metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.664 = u32[] constant(466688986), metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %xor.78 = u32[] xor(u32[] %xor.79, u32[] %constant.664), metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.18 (param_0.63: u32[2]) -> u32[2304] {
+  %iota.8 = u32[4608]{0} iota(), iota_dimension=0
+  %slice.128 = u32[2304]{0} slice(u32[4608]{0} %iota.8), slice={[2304:4608]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/slice[ limit_indices=(4608,)\n                                                                                start_indices=(2304,)\n                                                                                strides=None ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_0.63 = u32[2]{0} parameter(0)
+  %slice.127 = u32[1]{0} slice(u32[2]{0} %param_0.63), slice={[1:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                                                start_indices=(1,)\n                                                                                strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.154 = u32[] reshape(u32[1]{0} %slice.127), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.348 = u32[2304]{0} broadcast(u32[] %reshape.154), dimensions={}, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.242 = u32[2304]{0} add(u32[2304]{0} %slice.128, u32[2304]{0} %broadcast.348), metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.19 (param_0.65: u32[2]) -> u32[] {
+  %param_0.65 = u32[2]{0} parameter(0)
+  %slice.129 = u32[1]{0} slice(u32[2]{0} %param_0.65), slice={[1:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                                                start_indices=(1,)\n                                                                                strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  ROOT %reshape.155 = u32[] reshape(u32[1]{0} %slice.129), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%fused_computation.20 (param_0.67: u32[2]) -> u32[2304] {
+  %iota.9 = u32[4608]{0} iota(), iota_dimension=0
+  %slice.131 = u32[2304]{0} slice(u32[4608]{0} %iota.9), slice={[0:2304]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/slice[ limit_indices=(2304,)\n                                                                                start_indices=(0,)\n                                                                                strides=None ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_0.67 = u32[2]{0} parameter(0)
+  %slice.130 = u32[1]{0} slice(u32[2]{0} %param_0.67), slice={[0:1]}
+  %reshape.156 = u32[] reshape(u32[1]{0} %slice.130), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.349 = u32[2304]{0} broadcast(u32[] %reshape.156), dimensions={}, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.243 = u32[2304]{0} add(u32[2304]{0} %slice.131, u32[2304]{0} %broadcast.349), metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.21 (param_0.69: u32[2]) -> u32[] {
+  %param_0.69 = u32[2]{0} parameter(0)
+  %slice.132 = u32[1]{0} slice(u32[2]{0} %param_0.69), slice={[0:1]}
+  ROOT %reshape.158 = u32[] reshape(u32[1]{0} %slice.132), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%fused_computation.22 (param_0.72: u32[2], param_1.115: u32[2]) -> u32[] {
+  %param_0.72 = u32[2]{0} parameter(0)
+  %param_1.115 = u32[2]{0} parameter(1)
+  %concatenate.23 = u32[4]{0} concatenate(u32[2]{0} %param_0.72, u32[2]{0} %param_1.115), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.163 = u32[2,2]{1,0} reshape(u32[4]{0} %concatenate.23), metadata={op_type="reshape" op_name="jit(test_conv2d)/jit(_split)/reshape[ dimensions=None\n                                      new_sizes=(2, 2) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.135 = u32[1,1]{1,0} slice(u32[2,2]{1,0} %reshape.163), slice={[1:2], [0:1]}
+  %reshape.162 = u32[] reshape(u32[1,1]{1,0} %slice.135), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.134 = u32[1,2]{1,0} slice(u32[2,2]{1,0} %reshape.163), slice={[1:2], [0:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/slice[ limit_indices=(2, 2)\n                        start_indices=(1, 0)\n                        strides=(1, 1) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.161 = u32[2]{0} reshape(u32[1,2]{1,0} %slice.134), metadata={op_type="squeeze" op_name="jit(test_conv2d)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.133 = u32[1]{0} slice(u32[2]{0} %reshape.161), slice={[1:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                       start_indices=(1,)\n                                                       strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.160 = u32[] reshape(u32[1]{0} %slice.133), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %xor.81 = u32[] xor(u32[] %reshape.162, u32[] %reshape.160), metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %constant.666 = u32[] constant(466688986), metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %xor.80 = u32[] xor(u32[] %xor.81, u32[] %constant.666), metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.23 (param_0.76: u32[2], param_1.125: u32[2]) -> u32[2] {
+  %iota.10 = u32[4]{0} iota(), iota_dimension=0
+  %slice.138 = u32[2]{0} slice(u32[4]{0} %iota.10), slice={[2:4]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/slice[ limit_indices=(4,)\n                                                       start_indices=(2,)\n                                                       strides=None ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_0.76 = u32[2]{0} parameter(0)
+  %param_1.125 = u32[2]{0} parameter(1)
+  %concatenate.24 = u32[4]{0} concatenate(u32[2]{0} %param_0.76, u32[2]{0} %param_1.125), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.166 = u32[2,2]{1,0} reshape(u32[4]{0} %concatenate.24), metadata={op_type="reshape" op_name="jit(test_conv2d)/jit(_split)/reshape[ dimensions=None\n                                      new_sizes=(2, 2) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.137 = u32[1,2]{1,0} slice(u32[2,2]{1,0} %reshape.166), slice={[1:2], [0:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/slice[ limit_indices=(2, 2)\n                        start_indices=(1, 0)\n                        strides=(1, 1) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.165 = u32[2]{0} reshape(u32[1,2]{1,0} %slice.137), metadata={op_type="squeeze" op_name="jit(test_conv2d)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.136 = u32[1]{0} slice(u32[2]{0} %reshape.165), slice={[1:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                       start_indices=(1,)\n                                                       strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.164 = u32[] reshape(u32[1]{0} %slice.136), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.351 = u32[2]{0} broadcast(u32[] %reshape.164), dimensions={}, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.244 = u32[2]{0} add(u32[2]{0} %slice.138, u32[2]{0} %broadcast.351), metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.24 (param_0.82: u32[2], param_1.126: u32[2]) -> u32[] {
+  %param_0.82 = u32[2]{0} parameter(0)
+  %param_1.126 = u32[2]{0} parameter(1)
+  %concatenate.25 = u32[4]{0} concatenate(u32[2]{0} %param_0.82, u32[2]{0} %param_1.126), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.169 = u32[2,2]{1,0} reshape(u32[4]{0} %concatenate.25), metadata={op_type="reshape" op_name="jit(test_conv2d)/jit(_split)/reshape[ dimensions=None\n                                      new_sizes=(2, 2) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.140 = u32[1,2]{1,0} slice(u32[2,2]{1,0} %reshape.169), slice={[1:2], [0:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/slice[ limit_indices=(2, 2)\n                        start_indices=(1, 0)\n                        strides=(1, 1) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.168 = u32[2]{0} reshape(u32[1,2]{1,0} %slice.140), metadata={op_type="squeeze" op_name="jit(test_conv2d)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.139 = u32[1]{0} slice(u32[2]{0} %reshape.168), slice={[1:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                       start_indices=(1,)\n                                                       strides=(1,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  ROOT %reshape.167 = u32[] reshape(u32[1]{0} %slice.139), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%fused_computation.25 (param_0.84: u32[2], param_1.133: u32[2]) -> u32[2] {
+  %iota.11 = u32[4]{0} iota(), iota_dimension=0
+  %slice.142 = u32[2]{0} slice(u32[4]{0} %iota.11), slice={[0:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                       start_indices=(0,)\n                                                       strides=None ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_0.84 = u32[2]{0} parameter(0)
+  %param_1.133 = u32[2]{0} parameter(1)
+  %concatenate.26 = u32[4]{0} concatenate(u32[2]{0} %param_0.84, u32[2]{0} %param_1.133), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.171 = u32[2,2]{1,0} reshape(u32[4]{0} %concatenate.26), metadata={op_type="reshape" op_name="jit(test_conv2d)/jit(_split)/reshape[ dimensions=None\n                                      new_sizes=(2, 2) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.141 = u32[1,1]{1,0} slice(u32[2,2]{1,0} %reshape.171), slice={[1:2], [0:1]}
+  %reshape.170 = u32[] reshape(u32[1,1]{1,0} %slice.141), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.352 = u32[2]{0} broadcast(u32[] %reshape.170), dimensions={}, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  ROOT %add.245 = u32[2]{0} add(u32[2]{0} %slice.142, u32[2]{0} %broadcast.352), metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+}
+
+%fused_computation.26 (param_0.88: u32[2], param_1.134: u32[2]) -> u32[] {
+  %param_0.88 = u32[2]{0} parameter(0)
+  %param_1.134 = u32[2]{0} parameter(1)
+  %concatenate.27 = u32[4]{0} concatenate(u32[2]{0} %param_0.88, u32[2]{0} %param_1.134), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.173 = u32[2,2]{1,0} reshape(u32[4]{0} %concatenate.27), metadata={op_type="reshape" op_name="jit(test_conv2d)/jit(_split)/reshape[ dimensions=None\n                                      new_sizes=(2, 2) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %slice.143 = u32[1,1]{1,0} slice(u32[2,2]{1,0} %reshape.173), slice={[1:2], [0:1]}
+  ROOT %reshape.172 = u32[] reshape(u32[1,1]{1,0} %slice.143), metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%fused_computation.27 () -> u32[2] {
+  %iota.12 = u32[4]{0} iota(), iota_dimension=0
+  ROOT %slice.144 = u32[2]{0} slice(u32[4]{0} %iota.12), slice={[2:4]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/slice[ limit_indices=(4,)\n                                                       start_indices=(2,)\n                                                       strides=None ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%fused_computation.28 () -> u32[2] {
+  %iota.13 = u32[4]{0} iota(), iota_dimension=0
+  ROOT %slice.145 = u32[2]{0} slice(u32[4]{0} %iota.13), slice={[0:2]}, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                       start_indices=(0,)\n                                                       strides=None ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%parallel_broadcast.1342 (p: f32[]) -> f32[32,64,64,16] {
+  %p = f32[] parameter(0)
+  ROOT %broadcast.1342.clone = f32[32,64,64,16]{3,2,1,0} broadcast(f32[] %p), dimensions={}, outer_dimension_partitions={3}, metadata={op_type="broadcast_in_dim" op_name="jit(test_conv2d)/broadcast_in_dim[ broadcast_dimensions=(  )\n                                   shape=(32, 64, 64, 16) ]" source_file="jax/jax_test_conv2d.py" source_line=27}
+}
+
+%primitive_computation_max.1351 (parameter.1352: f32[], parameter.1353: f32[]) -> f32[] {
+  %parameter.1352 = f32[] parameter(0), metadata={op_type="max" op_name="max"}
+  %parameter.1353 = f32[] parameter(1), metadata={op_type="max" op_name="max"}
+  ROOT %maximum.1354 = f32[] maximum(f32[] %parameter.1352, f32[] %parameter.1353), metadata={op_type="max" op_name="max"}
+}
+
+%parallel_reduce-window.1355 (p.1: f32[32,64,64,32], p.2: f32[]) -> f32[32,63,63,32] {
+  %p.1 = f32[32,64,64,32]{3,2,1,0} parameter(0)
+  %p.2 = f32[] parameter(1)
+  ROOT %reduce-window.1355.clone = f32[32,63,63,32]{3,2,1,0} reduce-window(f32[32,64,64,32]{3,2,1,0} %p.1, f32[] %p.2), window={size=1x2x2x1}, to_apply=%primitive_computation_max.1351, outer_dimension_partitions={3}, metadata={op_type="reduce_window_max" op_name="jit(test_conv2d)/reduce_window_max[ base_dilation=(1, 1, 1, 1)\n                                    padding=((0, 0), (0, 0), (0, 0), (0, 0))\n                                    window_dilation=(1, 1, 1, 1)\n                                    window_dimensions=(1, 2, 2, 1)\n                                    window_strides=(1, 1, 1, 1) ]" source_file="jax/jax_test_conv2d.py" source_line=28}
+}
+
+%fused_computation.8.clone (param_0.93: f32[32,64,64,32], param_1.137: f32[1,1,1,32], param_2.121: f32[1,1,1,32], param_3.123: u32[16], param_4.162: u32[16]) -> f32[32,64,64,32] {
+  %param_0.93 = f32[32,64,64,32]{3,2,1,0} parameter(0)
+  %constant.675 = f32[] constant(-0.99999994), metadata={op_type="xla_call" op_name="jit(test_conv2d)/jit(_normal)/xla_call[ backend=None\n                                        device=None\n                                        donated_invars=(False, False, False, False)\n                                        name=_uniform ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.378 = f32[32]{0} broadcast(f32[] %constant.675), dimensions={}, metadata={op_type="max" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/max" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_3.123 = u32[16]{0} parameter(3)
+  %param_4.162 = u32[16]{0} parameter(4)
+  %concatenate.28 = u32[32]{0} concatenate(u32[16]{0} %param_3.123, u32[16]{0} %param_4.162), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.680 = u32[] constant(9), metadata={op_type="shift_right_logical" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.382 = u32[32]{0} broadcast(u32[] %constant.680), dimensions={}, metadata={op_type="shift_right_logical" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %shift-right-logical.62 = u32[32]{0} shift-right-logical(u32[32]{0} %concatenate.28, u32[32]{0} %broadcast.382), metadata={op_type="shift_right_logical" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.678 = u32[] constant(1065353216), metadata={op_type="or" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/or" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.381 = u32[32]{0} broadcast(u32[] %constant.678), dimensions={}, metadata={op_type="or" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/or" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %or.62 = u32[32]{0} or(u32[32]{0} %shift-right-logical.62, u32[32]{0} %broadcast.381), metadata={op_type="or" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/or" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %bitcast-convert.9 = f32[32]{0} bitcast-convert(u32[32]{0} %or.62), metadata={op_type="bitcast_convert_type" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/bitcast_convert_type[ new_dtype=float32 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.677 = f32[] constant(-1)
+  %broadcast.380 = f32[32]{0} broadcast(f32[] %constant.677), dimensions={}
+  %add.259 = f32[32]{0} add(f32[32]{0} %bitcast-convert.9, f32[32]{0} %broadcast.380), metadata={op_type="sub" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/sub" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.676 = f32[] constant(2)
+  %broadcast.379 = f32[32]{0} broadcast(f32[] %constant.676), dimensions={}, metadata={op_type="mul" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/mul" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.131 = f32[32]{0} multiply(f32[32]{0} %add.259, f32[32]{0} %broadcast.379), metadata={op_type="mul" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/mul" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.261 = f32[32]{0} add(f32[32]{0} %multiply.131, f32[32]{0} %broadcast.378), metadata={op_type="add" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/add" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %maximum.10 = f32[32]{0} maximum(f32[32]{0} %broadcast.378, f32[32]{0} %add.261), metadata={op_type="max" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/max" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.185 = f32[1,1,1,32]{3,2,1,0} reshape(f32[32]{0} %maximum.10), metadata={op_type="max" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/max" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %abs.8 = f32[1,1,1,32]{3,2,1,0} abs(f32[1,1,1,32]{3,2,1,0} %reshape.185), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.711 = f32[] constant(1), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.405 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.711), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %compare.21 = pred[1,1,1,32]{3,2,1,0} compare(f32[1,1,1,32]{3,2,1,0} %abs.8, f32[1,1,1,32]{3,2,1,0} %broadcast.405), direction=EQ, type=UNSIGNED, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.709 = f32[] constant(inf), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.404 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.709), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.141 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %reshape.185, f32[1,1,1,32]{3,2,1,0} %broadcast.404), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_2.121 = f32[1,1,1,32]{3,2,1,0} parameter(2)
+  %negate.17 = f32[1,1,1,32]{3,2,1,0} negate(f32[1,1,1,32]{3,2,1,0} %param_2.121), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.686 = f32[] constant(5), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.385 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.686), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %compare.20 = pred[1,1,1,32]{3,2,1,0} compare(f32[1,1,1,32]{3,2,1,0} %negate.17, f32[1,1,1,32]{3,2,1,0} %broadcast.385), direction=LT, type=UNSIGNED, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.708 = f32[] constant(1.50140941), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.403 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.708), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.707 = f32[] constant(2.83297682), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.402 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.707), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.61 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.20, f32[1,1,1,32]{3,2,1,0} %broadcast.403, f32[1,1,1,32]{3,2,1,0} %broadcast.402), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.705 = f32[] constant(0.246640727), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.401 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.705), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.704 = f32[] constant(1.00167406), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.400 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.704), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.60 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.20, f32[1,1,1,32]{3,2,1,0} %broadcast.401, f32[1,1,1,32]{3,2,1,0} %broadcast.400), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.702 = f32[] constant(-0.00417768164), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.399 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.702), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.701 = f32[] constant(0.00943887047), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.398 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.701), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.59 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.20, f32[1,1,1,32]{3,2,1,0} %broadcast.399, f32[1,1,1,32]{3,2,1,0} %broadcast.398), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.700 = f32[] constant(-0.00125372503), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.397 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.700), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.699 = f32[] constant(-0.0076224613), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.396 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.699), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.58 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.20, f32[1,1,1,32]{3,2,1,0} %broadcast.397, f32[1,1,1,32]{3,2,1,0} %broadcast.396), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.698 = f32[] constant(0.00021858087), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.395 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.698), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.697 = f32[] constant(0.00573950773), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.394 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.697), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.57 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.20, f32[1,1,1,32]{3,2,1,0} %broadcast.395, f32[1,1,1,32]{3,2,1,0} %broadcast.394), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.696 = f32[] constant(-4.39150654e-06), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.393 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.696), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.695 = f32[] constant(-0.00367342844), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.392 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.695), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.56 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.20, f32[1,1,1,32]{3,2,1,0} %broadcast.393, f32[1,1,1,32]{3,2,1,0} %broadcast.392), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.694 = f32[] constant(-3.5233877e-06), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.391 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.694), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.693 = f32[] constant(0.00134934322), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.390 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.693), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.55 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.20, f32[1,1,1,32]{3,2,1,0} %broadcast.391, f32[1,1,1,32]{3,2,1,0} %broadcast.390), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.692 = f32[] constant(3.43273939e-07), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.389 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.692), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.689 = f32[] constant(0.000100950558), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.388 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.689), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.54 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.20, f32[1,1,1,32]{3,2,1,0} %broadcast.389, f32[1,1,1,32]{3,2,1,0} %broadcast.388), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.688 = f32[] constant(2.81022636e-08), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.387 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.688), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.687 = f32[] constant(-0.000200214257), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.386 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.687), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.53 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.20, f32[1,1,1,32]{3,2,1,0} %broadcast.387, f32[1,1,1,32]{3,2,1,0} %broadcast.386), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.684 = f32[] constant(-2.5)
+  %broadcast.384 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.684), dimensions={}
+  %add.263 = f32[1,1,1,32]{3,2,1,0} add(f32[1,1,1,32]{3,2,1,0} %negate.17, f32[1,1,1,32]{3,2,1,0} %broadcast.384), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_1.137 = f32[1,1,1,32]{3,2,1,0} parameter(1)
+  %constant.682 = f32[] constant(-3)
+  %broadcast.383 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.682), dimensions={}
+  %add.262 = f32[1,1,1,32]{3,2,1,0} add(f32[1,1,1,32]{3,2,1,0} %param_1.137, f32[1,1,1,32]{3,2,1,0} %broadcast.383), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.52 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.20, f32[1,1,1,32]{3,2,1,0} %add.263, f32[1,1,1,32]{3,2,1,0} %add.262), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.132 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %select.53, f32[1,1,1,32]{3,2,1,0} %select.52), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.264 = f32[1,1,1,32]{3,2,1,0} add(f32[1,1,1,32]{3,2,1,0} %select.54, f32[1,1,1,32]{3,2,1,0} %multiply.132), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.133 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %add.264, f32[1,1,1,32]{3,2,1,0} %select.52), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.265 = f32[1,1,1,32]{3,2,1,0} add(f32[1,1,1,32]{3,2,1,0} %select.55, f32[1,1,1,32]{3,2,1,0} %multiply.133), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.134 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %add.265, f32[1,1,1,32]{3,2,1,0} %select.52), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.266 = f32[1,1,1,32]{3,2,1,0} add(f32[1,1,1,32]{3,2,1,0} %select.56, f32[1,1,1,32]{3,2,1,0} %multiply.134), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.135 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %add.266, f32[1,1,1,32]{3,2,1,0} %select.52), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.267 = f32[1,1,1,32]{3,2,1,0} add(f32[1,1,1,32]{3,2,1,0} %select.57, f32[1,1,1,32]{3,2,1,0} %multiply.135), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.136 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %add.267, f32[1,1,1,32]{3,2,1,0} %select.52), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.268 = f32[1,1,1,32]{3,2,1,0} add(f32[1,1,1,32]{3,2,1,0} %select.58, f32[1,1,1,32]{3,2,1,0} %multiply.136), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.137 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %add.268, f32[1,1,1,32]{3,2,1,0} %select.52), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.269 = f32[1,1,1,32]{3,2,1,0} add(f32[1,1,1,32]{3,2,1,0} %select.59, f32[1,1,1,32]{3,2,1,0} %multiply.137), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.138 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %add.269, f32[1,1,1,32]{3,2,1,0} %select.52), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.270 = f32[1,1,1,32]{3,2,1,0} add(f32[1,1,1,32]{3,2,1,0} %select.60, f32[1,1,1,32]{3,2,1,0} %multiply.138), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.139 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %add.270, f32[1,1,1,32]{3,2,1,0} %select.52), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.271 = f32[1,1,1,32]{3,2,1,0} add(f32[1,1,1,32]{3,2,1,0} %select.61, f32[1,1,1,32]{3,2,1,0} %multiply.139), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.140 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %add.271, f32[1,1,1,32]{3,2,1,0} %reshape.185), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.62 = f32[1,1,1,32]{3,2,1,0} select(pred[1,1,1,32]{3,2,1,0} %compare.21, f32[1,1,1,32]{3,2,1,0} %multiply.141, f32[1,1,1,32]{3,2,1,0} %multiply.140), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.673 = f32[] constant(1.41421356e-06)
+  %broadcast.377 = f32[1,1,1,32]{3,2,1,0} broadcast(f32[] %constant.673), dimensions={}
+  %multiply.142 = f32[1,1,1,32]{3,2,1,0} multiply(f32[1,1,1,32]{3,2,1,0} %select.62, f32[1,1,1,32]{3,2,1,0} %broadcast.377), metadata={op_type="mul" op_name="jit(test_conv2d)/mul" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.186 = f32[32]{0} reshape(f32[1,1,1,32]{3,2,1,0} %multiply.142), metadata={op_type="add" op_name="jit(test_conv2d)/add" source_file="jax/jax_test_conv2d.py" source_line=28}
+  %broadcast.407 = f32[32,64,64,32]{3,2,1,0} broadcast(f32[32]{0} %reshape.186), dimensions={3}, metadata={op_type="add" op_name="jit(test_conv2d)/add" source_file="jax/jax_test_conv2d.py" source_line=28}
+  %add.272 = f32[32,64,64,32]{3,2,1,0} add(f32[32,64,64,32]{3,2,1,0} %param_0.93, f32[32,64,64,32]{3,2,1,0} %broadcast.407), metadata={op_type="add" op_name="jit(test_conv2d)/add" source_file="jax/jax_test_conv2d.py" source_line=28}
+  %constant.672 = f32[] constant(0), metadata={op_type="broadcast_in_dim" op_name="jit(test_conv2d)/broadcast_in_dim[ broadcast_dimensions=(  )\n                                   shape=(32, 64, 64, 16) ]" source_file="jax/jax_test_conv2d.py" source_line=27}
+  %broadcast.376 = f32[32,64,64,32]{3,2,1,0} broadcast(f32[] %constant.672), dimensions={}, metadata={op_type="max" op_name="jit(test_conv2d)/max" source_file="jax/jax_test_conv2d.py" source_line=28}
+  ROOT %maximum.11 = f32[32,64,64,32]{3,2,1,0} maximum(f32[32,64,64,32]{3,2,1,0} %add.272, f32[32,64,64,32]{3,2,1,0} %broadcast.376), metadata={op_type="max" op_name="jit(test_conv2d)/max" source_file="jax/jax_test_conv2d.py" source_line=28}
+}
+
+%parallel_fusion.8 (p.12: f32[32,64,64,32], p.13: f32[1,1,1,32], p.14: f32[1,1,1,32], p.15: u32[16], p.16: u32[16]) -> f32[32,64,64,32] {
+  %p.12 = f32[32,64,64,32]{3,2,1,0} parameter(0)
+  %p.13 = f32[1,1,1,32]{3,2,1,0} parameter(1)
+  %p.14 = f32[1,1,1,32]{3,2,1,0} parameter(2)
+  %p.15 = u32[16]{0} parameter(3)
+  %p.16 = u32[16]{0} parameter(4)
+  ROOT %fusion.8.clone = f32[32,64,64,32]{3,2,1,0} fusion(f32[32,64,64,32]{3,2,1,0} %p.12, f32[1,1,1,32]{3,2,1,0} %p.13, f32[1,1,1,32]{3,2,1,0} %p.14, u32[16]{0} %p.15, u32[16]{0} %p.16), kind=kLoop, calls=%fused_computation.8.clone, outer_dimension_partitions={3}, metadata={op_type="max" op_name="jit(test_conv2d)/max" source_file="jax/jax_test_conv2d.py" source_line=28}
+}
+
+%fused_computation.16.clone (param_0.94: u32[2304], param_1.138: u32[2304]) -> f32[3,3,16,32] {
+  %constant.722 = f32[] constant(-0.954499722), metadata={op_type="erf" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.415 = f32[4608]{0} broadcast(f32[] %constant.722), dimensions={}, metadata={op_type="add" op_name="jit(test_conv2d)/jit(_truncated_normal)/add" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.720 = f32[] constant(1.17549435e-38), metadata={op_type="xla_call" op_name="jit(test_conv2d)/jit(_truncated_normal)/xla_call[ backend=None\n                                                  device=None\n                                                  donated_invars=(False, False, False, False)\n                                                  name=_uniform ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.414 = f32[4608]{0} broadcast(f32[] %constant.720), dimensions={}, metadata={op_type="max" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/max" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %param_0.94 = u32[2304]{0} parameter(0)
+  %param_1.138 = u32[2304]{0} parameter(1)
+  %concatenate.29 = u32[4608]{0} concatenate(u32[2304]{0} %param_0.94, u32[2304]{0} %param_1.138), dimensions={0}, metadata={op_type="concatenate" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/concatenate[ dimension=0 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.718 = u32[] constant(9), metadata={op_type="shift_right_logical" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.413 = u32[4608]{0} broadcast(u32[] %constant.718), dimensions={}, metadata={op_type="shift_right_logical" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %shift-right-logical.64 = u32[4608]{0} shift-right-logical(u32[4608]{0} %concatenate.29, u32[4608]{0} %broadcast.413), metadata={op_type="shift_right_logical" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/shift_right_logical" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.717 = u32[] constant(1065353216), metadata={op_type="or" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/or" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.412 = u32[4608]{0} broadcast(u32[] %constant.717), dimensions={}, metadata={op_type="or" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/or" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %or.63 = u32[4608]{0} or(u32[4608]{0} %shift-right-logical.64, u32[4608]{0} %broadcast.412), metadata={op_type="or" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/or" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %bitcast-convert.10 = f32[4608]{0} bitcast-convert(u32[4608]{0} %or.63), metadata={op_type="bitcast_convert_type" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/bitcast_convert_type[ new_dtype=float32 ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.715 = f32[] constant(-1)
+  %broadcast.411 = f32[4608]{0} broadcast(f32[] %constant.715), dimensions={}
+  %add.273 = f32[4608]{0} add(f32[4608]{0} %bitcast-convert.10, f32[4608]{0} %broadcast.411), metadata={op_type="add" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/add" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %maximum.12 = f32[4608]{0} maximum(f32[4608]{0} %broadcast.414, f32[4608]{0} %add.273), metadata={op_type="max" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/max" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.713 = f32[] constant(1.90899944), metadata={op_type="sub" op_name="jit(test_conv2d)/jit(_truncated_normal)/sub" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.410 = f32[4608]{0} broadcast(f32[] %constant.713), dimensions={}, metadata={op_type="mul" op_name="jit(test_conv2d)/jit(_truncated_normal)/mul" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.143 = f32[4608]{0} multiply(f32[4608]{0} %maximum.12, f32[4608]{0} %broadcast.410), metadata={op_type="mul" op_name="jit(test_conv2d)/jit(_truncated_normal)/mul" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.274 = f32[4608]{0} add(f32[4608]{0} %broadcast.415, f32[4608]{0} %multiply.143), metadata={op_type="add" op_name="jit(test_conv2d)/jit(_truncated_normal)/add" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %reshape.187 = f32[3,3,16,32]{3,2,1,0} reshape(f32[4608]{0} %add.274), metadata={op_type="add" op_name="jit(test_conv2d)/jit(_truncated_normal)/add" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %abs.9 = f32[3,3,16,32]{3,2,1,0} abs(f32[3,3,16,32]{3,2,1,0} %reshape.187), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.753 = f32[] constant(1), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.438 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.753), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %compare.23 = pred[3,3,16,32]{3,2,1,0} compare(f32[3,3,16,32]{3,2,1,0} %abs.9, f32[3,3,16,32]{3,2,1,0} %broadcast.438), direction=EQ, type=UNSIGNED, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.752 = f32[] constant(inf), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.437 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.752), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.154 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %reshape.187, f32[3,3,16,32]{3,2,1,0} %broadcast.437), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %negate.18 = f32[3,3,16,32]{3,2,1,0} negate(f32[3,3,16,32]{3,2,1,0} %reshape.187), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.144 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %negate.18, f32[3,3,16,32]{3,2,1,0} %reshape.187), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %log-plus-one.4 = f32[3,3,16,32]{3,2,1,0} log-plus-one(f32[3,3,16,32]{3,2,1,0} %multiply.144), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %negate.19 = f32[3,3,16,32]{3,2,1,0} negate(f32[3,3,16,32]{3,2,1,0} %log-plus-one.4), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.725 = f32[] constant(5), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.418 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.725), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %compare.22 = pred[3,3,16,32]{3,2,1,0} compare(f32[3,3,16,32]{3,2,1,0} %negate.19, f32[3,3,16,32]{3,2,1,0} %broadcast.418), direction=LT, type=UNSIGNED, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.751 = f32[] constant(1.50140941), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.436 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.751), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.750 = f32[] constant(2.83297682), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.435 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.750), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.72 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.22, f32[3,3,16,32]{3,2,1,0} %broadcast.436, f32[3,3,16,32]{3,2,1,0} %broadcast.435), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.748 = f32[] constant(0.246640727), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.434 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.748), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.746 = f32[] constant(1.00167406), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.433 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.746), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.71 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.22, f32[3,3,16,32]{3,2,1,0} %broadcast.434, f32[3,3,16,32]{3,2,1,0} %broadcast.433), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.745 = f32[] constant(-0.00417768164), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.432 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.745), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.744 = f32[] constant(0.00943887047), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.431 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.744), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.70 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.22, f32[3,3,16,32]{3,2,1,0} %broadcast.432, f32[3,3,16,32]{3,2,1,0} %broadcast.431), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.743 = f32[] constant(-0.00125372503), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.430 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.743), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.741 = f32[] constant(-0.0076224613), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.429 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.741), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.69 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.22, f32[3,3,16,32]{3,2,1,0} %broadcast.430, f32[3,3,16,32]{3,2,1,0} %broadcast.429), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.739 = f32[] constant(0.00021858087), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.428 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.739), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.738 = f32[] constant(0.00573950773), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.427 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.738), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.68 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.22, f32[3,3,16,32]{3,2,1,0} %broadcast.428, f32[3,3,16,32]{3,2,1,0} %broadcast.427), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.737 = f32[] constant(-4.39150654e-06), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.426 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.737), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.736 = f32[] constant(-0.00367342844), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.425 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.736), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.67 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.22, f32[3,3,16,32]{3,2,1,0} %broadcast.426, f32[3,3,16,32]{3,2,1,0} %broadcast.425), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.734 = f32[] constant(-3.5233877e-06), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.424 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.734), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.732 = f32[] constant(0.00134934322), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.423 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.732), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.66 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.22, f32[3,3,16,32]{3,2,1,0} %broadcast.424, f32[3,3,16,32]{3,2,1,0} %broadcast.423), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.731 = f32[] constant(3.43273939e-07), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.422 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.731), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.730 = f32[] constant(0.000100950558), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.421 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.730), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.65 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.22, f32[3,3,16,32]{3,2,1,0} %broadcast.422, f32[3,3,16,32]{3,2,1,0} %broadcast.421), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.729 = f32[] constant(2.81022636e-08), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.420 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.729), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.727 = f32[] constant(-0.000200214257), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %broadcast.419 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.727), dimensions={}, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.64 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.22, f32[3,3,16,32]{3,2,1,0} %broadcast.420, f32[3,3,16,32]{3,2,1,0} %broadcast.419), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.724 = f32[] constant(-2.5)
+  %broadcast.417 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.724), dimensions={}
+  %add.276 = f32[3,3,16,32]{3,2,1,0} add(f32[3,3,16,32]{3,2,1,0} %negate.19, f32[3,3,16,32]{3,2,1,0} %broadcast.417), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %sqrt.4 = f32[3,3,16,32]{3,2,1,0} sqrt(f32[3,3,16,32]{3,2,1,0} %negate.19), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.723 = f32[] constant(-3)
+  %broadcast.416 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.723), dimensions={}
+  %add.275 = f32[3,3,16,32]{3,2,1,0} add(f32[3,3,16,32]{3,2,1,0} %sqrt.4, f32[3,3,16,32]{3,2,1,0} %broadcast.416), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.63 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.22, f32[3,3,16,32]{3,2,1,0} %add.276, f32[3,3,16,32]{3,2,1,0} %add.275), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.145 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %select.64, f32[3,3,16,32]{3,2,1,0} %select.63), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.277 = f32[3,3,16,32]{3,2,1,0} add(f32[3,3,16,32]{3,2,1,0} %select.65, f32[3,3,16,32]{3,2,1,0} %multiply.145), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.146 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %add.277, f32[3,3,16,32]{3,2,1,0} %select.63), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.278 = f32[3,3,16,32]{3,2,1,0} add(f32[3,3,16,32]{3,2,1,0} %select.66, f32[3,3,16,32]{3,2,1,0} %multiply.146), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.147 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %add.278, f32[3,3,16,32]{3,2,1,0} %select.63), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.279 = f32[3,3,16,32]{3,2,1,0} add(f32[3,3,16,32]{3,2,1,0} %select.67, f32[3,3,16,32]{3,2,1,0} %multiply.147), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.148 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %add.279, f32[3,3,16,32]{3,2,1,0} %select.63), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.280 = f32[3,3,16,32]{3,2,1,0} add(f32[3,3,16,32]{3,2,1,0} %select.68, f32[3,3,16,32]{3,2,1,0} %multiply.148), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.149 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %add.280, f32[3,3,16,32]{3,2,1,0} %select.63), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.281 = f32[3,3,16,32]{3,2,1,0} add(f32[3,3,16,32]{3,2,1,0} %select.69, f32[3,3,16,32]{3,2,1,0} %multiply.149), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.150 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %add.281, f32[3,3,16,32]{3,2,1,0} %select.63), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.282 = f32[3,3,16,32]{3,2,1,0} add(f32[3,3,16,32]{3,2,1,0} %select.70, f32[3,3,16,32]{3,2,1,0} %multiply.150), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.151 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %add.282, f32[3,3,16,32]{3,2,1,0} %select.63), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.283 = f32[3,3,16,32]{3,2,1,0} add(f32[3,3,16,32]{3,2,1,0} %select.71, f32[3,3,16,32]{3,2,1,0} %multiply.151), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.152 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %add.283, f32[3,3,16,32]{3,2,1,0} %select.63), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %add.284 = f32[3,3,16,32]{3,2,1,0} add(f32[3,3,16,32]{3,2,1,0} %select.72, f32[3,3,16,32]{3,2,1,0} %multiply.152), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %multiply.153 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %add.284, f32[3,3,16,32]{3,2,1,0} %reshape.187), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %select.73 = f32[3,3,16,32]{3,2,1,0} select(pred[3,3,16,32]{3,2,1,0} %compare.23, f32[3,3,16,32]{3,2,1,0} %multiply.154, f32[3,3,16,32]{3,2,1,0} %multiply.153), metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_truncated_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.712 = f32[] constant(0.109393179)
+  %broadcast.409 = f32[3,3,16,32]{3,2,1,0} broadcast(f32[] %constant.712), dimensions={}
+  ROOT %multiply.155 = f32[3,3,16,32]{3,2,1,0} multiply(f32[3,3,16,32]{3,2,1,0} %select.73, f32[3,3,16,32]{3,2,1,0} %broadcast.409), metadata={op_type="mul" op_name="jit(test_conv2d)/mul" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+%parallel_fusion.16 (p.17: u32[2304], p.18: u32[2304]) -> f32[3,3,16,32] {
+  %p.17 = u32[2304]{0} parameter(0)
+  %p.18 = u32[2304]{0} parameter(1)
+  ROOT %fusion.16.clone = f32[3,3,16,32]{3,2,1,0} fusion(u32[2304]{0} %p.17, u32[2304]{0} %p.18), kind=kLoop, calls=%fused_computation.16.clone, outer_dimension_partitions={2,2}, metadata={op_type="mul" op_name="jit(test_conv2d)/mul" source_file="jax/jax_test_conv2d.py" source_line=24}
+}
+
+ENTRY %jit_test_conv2d.1357 () -> (f32[32,63,63,32]) {
+  %constant.1341 = f32[] constant(0), metadata={op_type="broadcast_in_dim" op_name="jit(test_conv2d)/broadcast_in_dim[ broadcast_dimensions=(  )\n                                   shape=(32, 64, 64, 16) ]" source_file="jax/jax_test_conv2d.py" source_line=27}
+  %call = f32[32,64,64,16]{3,2,1,0} call(f32[] %constant.1341), to_apply=%parallel_broadcast.1342
+  %constant.77 = s32[] constant(0), metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %copy.48 = s32[] copy(s32[] %constant.77)
+  %copy.24 = s32[] copy(s32[] %constant.77)
+  %copy = s32[] copy(s32[] %constant.77)
+  %fusion.28 = u32[2]{0} fusion(), kind=kLoop, calls=%fused_computation.28, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/slice[ limit_indices=(2,)\n                                                       start_indices=(0,)\n                                                       strides=None ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %fusion.27 = u32[2]{0} fusion(), kind=kLoop, calls=%fused_computation.27, metadata={op_type="slice" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/slice[ limit_indices=(4,)\n                                                       start_indices=(2,)\n                                                       strides=None ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %constant.419 = u32[] constant(0), metadata={op_type="convert_element_type" op_name="jit(test_conv2d)/convert_element_type[ new_dtype=uint32\n                                       old_dtype=int32 ]" source_file="jax/jax_test_conv2d.py" source_line=22}
+  %copy.97 = u32[] copy(u32[] %constant.419)
+  %constant.106 = u32[] constant(466688986), metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %copy.96 = u32[] copy(u32[] %constant.106)
+  %copy.5 = u32[] copy(u32[] %copy.97)
+  %constant.81 = u32[4]{0} constant({13, 15, 26, 6}), metadata={op_type="threefry2x32" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/threefry2x32" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %copy.6 = u32[4]{0} copy(u32[4]{0} %constant.81)
+  %constant.82 = u32[4]{0} constant({17, 29, 16, 24}), metadata={op_type="threefry2x32" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/threefry2x32" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %copy.7 = u32[4]{0} copy(u32[4]{0} %constant.82)
+  %tuple.91 = (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) tuple(s32[] %copy, u32[2]{0} %fusion.28, u32[2]{0} %fusion.27, u32[] %copy.97, u32[] %copy.96, u32[] %copy.5, u32[4]{0} %copy.6, u32[4]{0} %copy.7)
+  %while.14 = (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) while((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %tuple.91), condition=%cond_computation.85.clone, body=%body_computation.17.clone
+  %get-tuple-element.453 = u32[2]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %while.14), index=1, metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %get-tuple-element.454 = u32[2]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %while.14), index=2, metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.25 = u32[2]{0} fusion(u32[2]{0} %get-tuple-element.453, u32[2]{0} %get-tuple-element.454), kind=kLoop, calls=%fused_computation.25, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.23 = u32[2]{0} fusion(u32[2]{0} %get-tuple-element.453, u32[2]{0} %get-tuple-element.454), kind=kLoop, calls=%fused_computation.23, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.24 = u32[] fusion(u32[2]{0} %get-tuple-element.453, u32[2]{0} %get-tuple-element.454), kind=kLoop, calls=%fused_computation.24, metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %fusion.22 = u32[] fusion(u32[2]{0} %get-tuple-element.453, u32[2]{0} %get-tuple-element.454), kind=kLoop, calls=%fused_computation.22, metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.26 = u32[] fusion(u32[2]{0} %get-tuple-element.453, u32[2]{0} %get-tuple-element.454), kind=kLoop, calls=%fused_computation.26, metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_split)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %copy.30 = u32[4]{0} copy(u32[4]{0} %constant.81)
+  %copy.31 = u32[4]{0} copy(u32[4]{0} %constant.82)
+  %tuple.94 = (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) tuple(s32[] %copy.24, u32[2]{0} %fusion.25, u32[2]{0} %fusion.23, u32[] %fusion.24, u32[] %fusion.22, u32[] %fusion.26, u32[4]{0} %copy.30, u32[4]{0} %copy.31)
+  %while.15 = (s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) while((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %tuple.94), condition=%cond_computation__1.228.clone, body=%body_computation__1.160.clone
+  %get-tuple-element.504 = u32[2]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %while.15), index=1, metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.20 = u32[2304]{0} fusion(u32[2]{0} %get-tuple-element.504), kind=kLoop, calls=%fused_computation.20, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.18 = u32[2304]{0} fusion(u32[2]{0} %get-tuple-element.504), kind=kLoop, calls=%fused_computation.18, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.19 = u32[] fusion(u32[2]{0} %get-tuple-element.504), kind=kLoop, calls=%fused_computation.19, metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %fusion.17 = u32[] fusion(u32[2]{0} %get-tuple-element.504), kind=kLoop, calls=%fused_computation.17, metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.21 = u32[] fusion(u32[2]{0} %get-tuple-element.504), kind=kLoop, calls=%fused_computation.21, metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_truncated_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %copy.54 = u32[4]{0} copy(u32[4]{0} %constant.81)
+  %copy.55 = u32[4]{0} copy(u32[4]{0} %constant.82)
+  %tuple.97 = (s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) tuple(s32[] %copy.48, u32[2304]{0} %fusion.20, u32[2304]{0} %fusion.18, u32[] %fusion.19, u32[] %fusion.17, u32[] %fusion.21, u32[4]{0} %copy.54, u32[4]{0} %copy.55)
+  %while.16 = (s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) while((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %tuple.97), condition=%cond_computation__2.377.clone, body=%body_computation__2.309.clone
+  %get-tuple-element.555 = u32[2304]{0} get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %while.16), index=1, metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %get-tuple-element.556 = u32[2304]{0} get-tuple-element((s32[], u32[2304]{0}, u32[2304]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %while.16), index=2, metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %call.5 = f32[3,3,16,32]{3,2,1,0} call(u32[2304]{0} %get-tuple-element.555, u32[2304]{0} %get-tuple-element.556), to_apply=%parallel_fusion.16
+  %convolution.1343 = f32[32,64,64,32]{3,2,1,0} convolution(f32[32,64,64,16]{3,2,1,0} %call, f32[3,3,16,32]{3,2,1,0} %call.5), window={size=3x3 pad=1_1x1_1}, dim_labels=b01f_01io->b01f, metadata={op_type="conv_general_dilated" op_name="jit(test_conv2d)/conv_general_dilated[ batch_group_count=1\n                                       dimension_numbers=ConvDimensionNumbers(lhs_spec=(0, 3, 1, 2), rhs_spec=(3, 2, 0, 1), out_spec=(0, 3, 1, 2))\n                                       feature_group_count=1\n                                       lhs_dilation=(1, 1)\n                                       lhs_shape=(32, 64, 64, 16)\n                                       padding=((1, 1), (1, 1))\n                                       precision=None\n                                       rhs_dilation=(1, 1)\n                                       rhs_shape=(3, 3, 16, 32)\n                                       window_strides=(1, 1) ]" source_file="jax/jax_test_conv2d.py" source_line=28}
+  %copy.72 = s32[] copy(s32[] %constant.77)
+  %get-tuple-element.505 = u32[2]{0} get-tuple-element((s32[], u32[2]{0}, u32[2]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %while.15), index=2, metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.14 = u32[16]{0} fusion(u32[2]{0} %get-tuple-element.504, u32[2]{0} %get-tuple-element.505), kind=kLoop, calls=%fused_computation.14, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.12 = u32[16]{0} fusion(u32[2]{0} %get-tuple-element.504, u32[2]{0} %get-tuple-element.505), kind=kLoop, calls=%fused_computation.12, metadata={op_type="add" op_name="add" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.13 = u32[] fusion(u32[2]{0} %get-tuple-element.504, u32[2]{0} %get-tuple-element.505), kind=kLoop, calls=%fused_computation.13, metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %fusion.11 = u32[] fusion(u32[2]{0} %get-tuple-element.504, u32[2]{0} %get-tuple-element.505), kind=kLoop, calls=%fused_computation.11, metadata={op_type="xor" op_name="xor" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.15 = u32[] fusion(u32[2]{0} %get-tuple-element.504, u32[2]{0} %get-tuple-element.505), kind=kLoop, calls=%fused_computation.15, metadata={op_type="squeeze" op_name="jit(test_conv2d)/jit(_normal)/jit(_uniform)/jit(threefry_2x32)/squeeze[ dimensions=(0,) ]" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %copy.78 = u32[4]{0} copy(u32[4]{0} %constant.81)
+  %copy.79 = u32[4]{0} copy(u32[4]{0} %constant.82)
+  %tuple.100 = (s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) tuple(s32[] %copy.72, u32[16]{0} %fusion.14, u32[16]{0} %fusion.12, u32[] %fusion.13, u32[] %fusion.11, u32[] %fusion.15, u32[4]{0} %copy.78, u32[4]{0} %copy.79)
+  %while.17 = (s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) while((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %tuple.100), condition=%cond_computation__3.860.clone, body=%body_computation__3.792.clone
+  %get-tuple-element.606 = u32[16]{0} get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %while.17), index=1, metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %get-tuple-element.607 = u32[16]{0} get-tuple-element((s32[], u32[16]{0}, u32[16]{0}, u32[], u32[], u32[], u32[4]{0}, u32[4]{0}) %while.17), index=2, metadata={op_type="while" op_name="while[ body_nconsts=0\n       cond_nconsts=0 ]" source_file="jax/jax_test_conv2d.py" source_line=33}
+  %fusion.10 = f32[1,1,1,32]{3,2,1,0} fusion(u32[16]{0} %get-tuple-element.606, u32[16]{0} %get-tuple-element.607), kind=kLoop, calls=%fused_computation.10, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %fusion.9 = f32[1,1,1,32]{3,2,1,0} fusion(f32[1,1,1,32]{3,2,1,0} %fusion.10), kind=kLoop, calls=%fused_computation.9, metadata={op_type="erf_inv" op_name="jit(test_conv2d)/jit(_normal)/erf_inv" source_file="jax/jax_test_conv2d.py" source_line=24}
+  %call.4 = f32[32,64,64,32]{3,2,1,0} call(f32[32,64,64,32]{3,2,1,0} %convolution.1343, f32[1,1,1,32]{3,2,1,0} %fusion.9, f32[1,1,1,32]{3,2,1,0} %fusion.10, u32[16]{0} %get-tuple-element.606, u32[16]{0} %get-tuple-element.607), to_apply=%parallel_fusion.8
+  %constant.1350 = f32[] constant(-inf), metadata={op_type="reduce_window_max" op_name="jit(test_conv2d)/reduce_window_max[ base_dilation=(1, 1, 1, 1)\n                                    padding=((0, 0), (0, 0), (0, 0), (0, 0))\n                                    window_dilation=(1, 1, 1, 1)\n                                    window_dimensions=(1, 2, 2, 1)\n                                    window_strides=(1, 1, 1, 1) ]" source_file="jax/jax_test_conv2d.py" source_line=28}
+  %call.1 = f32[32,63,63,32]{3,2,1,0} call(f32[32,64,64,32]{3,2,1,0} %call.4, f32[] %constant.1350), to_apply=%parallel_reduce-window.1355
+  ROOT %tuple.1356 = (f32[32,63,63,32]{3,2,1,0}) tuple(f32[32,63,63,32]{3,2,1,0} %call.1)
+}
+
