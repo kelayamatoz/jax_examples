@@ -22,6 +22,8 @@ def test_conv2d():
     rng = random.PRNGKey(0)
     in_shape = (N, H, W, C)
     out_shape, net_params = net_init(rng, in_shape)
+    import code
+    code.interact(local=locals())
 
     # Apply network to dummy inputs
     inputs = jnp.zeros((N, H, W, C))
